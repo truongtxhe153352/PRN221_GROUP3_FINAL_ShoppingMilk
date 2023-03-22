@@ -1,0 +1,9 @@
+﻿<Application x:Class="PROJECT_FINAL_PRN221_GROUP3_SE1610.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+         
+    </Application.Resources>
+</Application>
