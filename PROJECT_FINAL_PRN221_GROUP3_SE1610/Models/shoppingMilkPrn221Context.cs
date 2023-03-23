@@ -19,6 +19,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
         }
 
         public virtual DbSet<Brand> Brands { get; set; } = null!;
+        public virtual DbSet<Cart> Carts { get; set; } = null!;
         public virtual DbSet<Category> Categories { get; set; } = null!;
         public virtual DbSet<Milk> Milk { get; set; } = null!;
         public virtual DbSet<Order> Orders { get; set; } = null!;
@@ -33,7 +34,6 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
             IConfigurationRoot configuration = builder.Build();
             optionsBuilder.UseSqlServer(configuration.GetConnectionString("prn221db"));
-
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -46,10 +46,33 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
                     .ValueGeneratedNever()
                     .HasColumnName("id");
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(10)
-                    .HasColumnName("name")
-                    .IsFixedLength();
+                entity.Property(e => e.BrandName)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("brand_name");
+            });
+
+            modelBuilder.Entity<Cart>(entity =>
+            {
+                entity.ToTable("Cart");
+
+                entity.Property(e => e.CartId)
+                    .ValueGeneratedNever()
+                    .HasColumnName("cart_id");
+
+                entity.Property(e => e.DateCreate)
+                    .HasColumnType("date")
+                    .HasColumnName("dateCreate");
+
+                entity.Property(e => e.MilkId).HasColumnName("milk_id");
+
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
+
+                entity.HasOne(d => d.Milk)
+                    .WithMany(p => p.Carts)
+                    .HasForeignKey(d => d.MilkId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Cart_Milk");
             });
 
             modelBuilder.Entity<Category>(entity =>
@@ -62,7 +85,10 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
                 entity.Property(e => e.BrandId).HasColumnName("brandId");
 
-                entity.Property(e => e.Name).HasColumnName("name");
+                entity.Property(e => e.Name)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("name");
 
                 entity.HasOne(d => d.Brand)
                     .WithMany(p => p.Categories)
@@ -72,41 +98,33 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
             modelBuilder.Entity<Milk>(entity =>
             {
-                entity.Property(e => e.Id)
+                entity.Property(e => e.MilkId)
                     .ValueGeneratedNever()
-                    .HasColumnName("id");
+                    .HasColumnName("milk_id");
 
                 entity.Property(e => e.CateId).HasColumnName("cateId");
 
                 entity.Property(e => e.Decription)
-                    .HasMaxLength(10)
-                    .HasColumnName("decription")
-                    .IsFixedLength();
+                    .HasMaxLength(50)
+                    .HasColumnName("decription");
 
                 entity.Property(e => e.ImageUrl)
-                    .HasMaxLength(10)
-                    .HasColumnName("imageURL")
-                    .IsFixedLength();
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("imageURL");
 
                 entity.Property(e => e.Name)
-                    .HasMaxLength(10)
-                    .HasColumnName("name")
-                    .IsFixedLength();
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("name");
 
-                entity.Property(e => e.Price)
-                    .HasMaxLength(10)
-                    .HasColumnName("price")
-                    .IsFixedLength();
+                entity.Property(e => e.Price).HasColumnName("price");
 
                 entity.Property(e => e.Published)
-                    .HasMaxLength(10)
-                    .HasColumnName("published")
-                    .IsFixedLength();
+                    .HasColumnType("date")
+                    .HasColumnName("published");
 
-                entity.Property(e => e.Quantity)
-                    .HasMaxLength(10)
-                    .HasColumnName("quantity")
-                    .IsFixedLength();
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
 
                 entity.Property(e => e.Userid).HasColumnName("userid");
 
@@ -130,31 +148,25 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
                     .HasColumnName("orderId");
 
                 entity.Property(e => e.Address)
-                    .HasMaxLength(10)
-                    .HasColumnName("address")
-                    .IsFixedLength();
-
-                entity.Property(e => e.CreateDate)
-                    .HasMaxLength(10)
-                    .HasColumnName("createDate")
-                    .IsFixedLength();
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("address");
 
                 entity.Property(e => e.OrderDate)
-                    .HasMaxLength(10)
-                    .HasColumnName("orderDate")
-                    .IsFixedLength();
+                    .HasColumnType("date")
+                    .HasColumnName("orderDate");
 
                 entity.Property(e => e.Phone)
-                    .HasMaxLength(10)
-                    .HasColumnName("phone")
-                    .IsFixedLength();
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("phone");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
                 entity.Property(e => e.Username)
-                    .HasMaxLength(10)
-                    .HasColumnName("username")
-                    .IsFixedLength();
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("username");
 
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Orders)
@@ -195,17 +207,17 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
                     .ValueGeneratedNever()
                     .HasColumnName("roleId");
 
-                entity.Property(e => e.Name)
-                    .HasMaxLength(10)
-                    .HasColumnName("name")
-                    .IsFixedLength();
+                entity.Property(e => e.RoleName)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("role_name");
 
                 entity.HasMany(d => d.Users)
                     .WithMany(p => p.Roles)
                     .UsingEntity<Dictionary<string, object>>(
                         "UseRole",
                         l => l.HasOne<User>().WithMany().HasForeignKey("UserId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Use_Role_User"),
-                        r => r.HasOne<Role>().WithMany().HasForeignKey("RoleId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Use_Role_Role"),
+                        r => r.HasOne<Role>().WithMany().HasForeignKey("RoleId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Use_Role_Role1"),
                         j =>
                         {
                             j.HasKey("RoleId", "UserId");
@@ -224,8 +236,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(250)
-                    .HasColumnName("address")
-                    .IsFixedLength();
+                    .IsUnicode(false)
+                    .HasColumnName("address");
 
                 entity.Property(e => e.BirthDate)
                     .HasColumnType("date")
@@ -233,28 +245,28 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
                 entity.Property(e => e.Email)
                     .HasMaxLength(250)
-                    .HasColumnName("email")
-                    .IsFixedLength();
+                    .IsUnicode(false)
+                    .HasColumnName("email");
 
                 entity.Property(e => e.FullName)
                     .HasMaxLength(250)
-                    .HasColumnName("fullName")
-                    .IsFixedLength();
-
-                entity.Property(e => e.Name)
-                    .HasMaxLength(250)
-                    .HasColumnName("name")
-                    .IsFixedLength();
+                    .IsUnicode(false)
+                    .HasColumnName("fullName");
 
                 entity.Property(e => e.Passwork)
                     .HasMaxLength(250)
-                    .HasColumnName("passwork")
-                    .IsFixedLength();
+                    .IsUnicode(false)
+                    .HasColumnName("passwork");
 
                 entity.Property(e => e.Phone)
-                    .HasMaxLength(11)
-                    .HasColumnName("phone")
-                    .IsFixedLength();
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("phone");
+
+                entity.Property(e => e.Username)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("username");
             });
 
             OnModelCreatingPartial(modelBuilder);

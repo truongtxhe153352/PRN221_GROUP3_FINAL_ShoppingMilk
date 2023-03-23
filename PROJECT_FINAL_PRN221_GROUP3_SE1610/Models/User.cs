@@ -13,7 +13,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
         }
 
         public long UserId { get; set; }
-        public string? Name { get; set; }
+        public string? Username { get; set; }
         public string? Passwork { get; set; }
         public string? Address { get; set; }
         public string? FullName { get; set; }

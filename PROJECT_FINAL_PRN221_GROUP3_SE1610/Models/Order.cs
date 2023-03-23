@@ -11,7 +11,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
         }
 
         public long OrderId { get; set; }
-        public string? OrderDate { get; set; }
+        public DateTime? OrderDate { get; set; }
         public string? Username { get; set; }
         public string? Address { get; set; }
         public string? Phone { get; set; }

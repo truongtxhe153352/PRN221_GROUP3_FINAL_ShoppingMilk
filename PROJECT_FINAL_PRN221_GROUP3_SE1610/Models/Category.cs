@@ -12,7 +12,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
         public long Id { get; set; }
         public long? BrandId { get; set; }
-        public long? Name { get; set; }
+        public string? Name { get; set; }
 
         public virtual Brand? Brand { get; set; }
         public virtual ICollection<Milk> Milk { get; set; }

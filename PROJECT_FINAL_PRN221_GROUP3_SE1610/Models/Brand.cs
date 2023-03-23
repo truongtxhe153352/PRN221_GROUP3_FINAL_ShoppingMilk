@@ -11,7 +11,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
         }
 
         public long Id { get; set; }
-        public string? Name { get; set; }
+        public string? BrandName { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }
     }
