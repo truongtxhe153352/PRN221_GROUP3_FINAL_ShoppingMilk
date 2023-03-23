@@ -56,15 +56,15 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 string password = txtPassword.Password.Trim();
 
                 User userForm = getUser();
-                User userLogin = context.Users.Where(x => x.Username.Equals(userForm.Username)
-                && x.Passwork.Equals(userForm.Passwork))
-                    .Include(r => r.Roles)
-                .FirstOrDefault();
+                //User userLogin = context.Users.Where(x => x.Username.Equals(userForm.Username)
+                //&& x.Passwork.Equals(userForm.Passwork))
+                //    .Include(r => r.Roles)
+                //.FirstOrDefault();
 
-        //        var userLogin = context.Users
-        //.Include(u => u.Roles) // include the Roles navigation property
-        //.FirstOrDefault(x => x.Username.Equals(userForm.Username)
-        //        && x.Passwork.Equals(userForm.Passwork));
+                var userLogin = context.Users
+        .Include(u => u.Roles) // include the Roles navigation property
+        .FirstOrDefault(x => x.Username.Equals(userForm.Username)
+                && x.Passwork.Equals(userForm.Passwork));
 
 
                 if (userLogin == null)
@@ -74,16 +74,18 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 else
                 {
                     List<Role> roles = userLogin.Roles.ToList();
-                    foreach (Role role in roles) {
+                    foreach (Role role in roles)
+                    {
                         if (role.RoleName.Equals("user"))
                         {
                             MessageBox.Show("Login User successfully!!!!");
-                            //Settings.UserName = userLogin.Name;
-                            // Settings.Role = userLogin.Roles.;
+                            Settings.UserName = userLogin.Username;
+                            //Settings.Role = userLogin.Roles.n;
                             MainWindow mainWindow = new MainWindow(userLogin);
                             mainWindow.Show();
                             this.Close();
-                        } else if (role.RoleName.Equals("admin"))
+                        }
+                        else if (role.RoleName.Equals("admin"))
                         {
                             MessageBox.Show("Login Admin successfully!!!!");
                             //Settings.UserName = userLogin.Name;
@@ -97,7 +99,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                             MessageBox.Show("Eo co gi o day");
                         }
                     }
-                        
+
 
                 }
             }
@@ -105,17 +107,18 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             {
                 MessageBox.Show("Username or Password is incorrect!!!");
             }
-        }   
-        
+        }
+
 
         private bool AllowLogin()
         {
-            if(txtUser.Text.Trim() == "") {
+            if (txtUser.Text.Trim() == "")
+            {
                 MessageBox.Show("Bạn chưa nhập thông tin tải khoản", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 txtUser.Focus();
                 return false;
             }
-            if(txtPassword.Password.Trim() == "")
+            if (txtPassword.Password.Trim() == "")
             {
                 MessageBox.Show("Bạn chưa nhập thông tin mật khẩu", "Cảnh báo", MessageBoxButton.OK, MessageBoxImage.Warning);
                 txtPassword.Focus();

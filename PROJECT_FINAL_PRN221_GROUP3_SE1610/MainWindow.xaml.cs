@@ -68,9 +68,26 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             //}
         }
 
-        private void btnLoginClick_Click(object sender, RoutedEventArgs e)
+        private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
+            if (userLogin == null)
+            {
+                Login loginWindow = new Login();
+                loginWindow.Show();
+                this.Close();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to logout?", "Confirm Logout", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
+                if (result == MessageBoxResult.Yes)
+                {
+                    Settings.UserName = null;
+                    MainWindow main = new MainWindow();
+                    main.Show();
+                    this.Close();
+                }
+            }
         }
     }
 }
