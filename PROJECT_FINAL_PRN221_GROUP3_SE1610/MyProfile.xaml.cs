@@ -66,21 +66,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 if (Settings.UserName != null)
                 {
 
-                    User user = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
-
-
-                    bool isDuplicate = context.Users.Any(x => x.Username == txtUserName.Text);
-
-                    if (isDuplicate)
-                    {
-                        // Thông tin đã trùng lặp với thông tin trong cơ sở dữ liệu
-                        MessageBox.Show("Register account : " + user.Username + "Exist. Please new usename!!!!!!");
-
-                    }
-                    else
-                    {
-
-                        // User user = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
+                         User user = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
                         // bindingUser(user);
                         //User user = new User();
 
@@ -100,10 +86,9 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                         user.Address = txtAddress.Text;
 
                         context.Users.Update(user);
-                        if (context.SaveChanges() > 0)
-                        {
-                            MessageBox.Show($"{user.Username} Update success");
-                        }
+                    if (context.SaveChanges() > 0)
+                    {
+                        MessageBox.Show($"{user.Username} Update success");
                     }
                 }
             }
@@ -113,5 +98,6 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 MessageBox.Show("Insert error: " + ex.Message);
             }
         }
+
     }
 }
