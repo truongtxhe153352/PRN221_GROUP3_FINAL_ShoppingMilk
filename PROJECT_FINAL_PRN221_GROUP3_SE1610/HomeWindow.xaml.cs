@@ -65,7 +65,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             {
                 query = query.Where(milk => milk.Name.Contains(keyword)).OrderBy(milk => milk.MilkId);
             }
-            List<Milk> list = await PaginatedList<Milk>.CreateAsync(query, pageIndex, 3);
+            List<Milk> list = await PaginatedList<Milk>.CreateAsync(query, pageIndex, 4);
             PaginatedList<Milk> pages = (PaginatedList<Milk>)list;
             foreach (var sp in listView.Children)
             {
