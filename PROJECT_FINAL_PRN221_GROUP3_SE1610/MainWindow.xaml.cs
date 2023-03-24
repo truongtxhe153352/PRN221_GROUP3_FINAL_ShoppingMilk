@@ -23,6 +23,9 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
     {
         private User userLogin;
 
+        bool isLoggedIn = false;
+
+
         shoppingMilkPrn221Context context = new shoppingMilkPrn221Context();
 
         public MainWindow()
@@ -42,30 +45,17 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             if (Settings.UserName != null)
             {
                 User user1 = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
+                isLoggedIn = true;
+                btnMyProfile.Visibility = Visibility.Visible;
                 bindingUser(user1);
             }
-           // bindingCart();
+            // bindingCart();
         }
 
         private void bindingUser(User user)
         {
             userLogin = user;
-            btnLogin.Content = "Logout(" + user.Username + ")";
-            //if (user.Role == 1)
-            //{
-            //    btnAlbums.IsEnabled = true;
-            //}
-            //if (Settings.CartId != null)
-            //{
-            //    List<Cart> listCarts = context.Carts.Where(x => x.CartId == Settings.CartId).ToList();
-            //    for (int i = 0; i < listCarts.Count; i++)
-            //    {
-            //        Cart cart = context.Carts.Where(x => x.RecordId == listCarts[i].RecordId).FirstOrDefault();
-            //        cart.CartId = userLogin.UserName;
-            //        context.Carts.Update(cart);
-            //        context.SaveChanges();
-            //    }
-            //}
+            btnLogin.Content = "Logout(" + user.Username + "))";
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -90,6 +80,19 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             }
         }
 
+
+        private void btnMyProfile_Click(object sender, RoutedEventArgs e)
+        {
+            if (Settings.UserName != null)
+            {
+                User user1 = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
+                isLoggedIn = true;
+                btnMyProfile.Visibility = Visibility.Visible;
+                bindingUser(user1);
+                MyProfile myProfile = new MyProfile(user1);
+                myProfile.Show();
+            }
+            
         private void btnCart_Click(object sender, RoutedEventArgs e)
         {
             CartWindow cartWindows = new CartWindow();
@@ -101,6 +104,13 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             HomeWindow home = new HomeWindow();
             home.Show();
+            this.Close();
+        }
+
+        private void btnManagerUser_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerUser mU = new ManagerUser();
+            mU.Show();
             this.Close();
         }
     }

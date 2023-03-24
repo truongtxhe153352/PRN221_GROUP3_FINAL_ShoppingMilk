@@ -1,0 +1,45 @@
+﻿<Window x:Class="PROJECT_FINAL_PRN221_GROUP3_SE1610.MyProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
+        mc:Ignorable="d"
+        Title="MyProfile" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Width="400">
+            <StackPanel >
+                <Label Foreground="Green" FontWeight="Bold" FontSize="30">My Profile</Label>
+                <Label>Username:</Label>
+                <TextBox Name="txtUserName"/>
+                <Label>Full Name:</Label>
+                <TextBox Name="txtFullName"/>
+                <Label>Email:</Label>
+                <TextBox Name="txtEmail"/>
+                <Label>Phone:</Label>
+                <TextBox Name="txtPhone"/>
+                <Label>Address:</Label>
+                <TextBox Name="txtAddress"/>
+                <Label>BirthDate:</Label>
+                <DatePicker Name="dpkDateBirth"/>
+                <Label>Gender:</Label>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Name="rdoMale">Male</RadioButton>
+                    <RadioButton Name="rdoFemale">Female</RadioButton>
+                </StackPanel>
+                <!-- các điều khiển hiển thị thông tin khác của tài khoản -->
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel>
+                <Button Width="80" Margin="5" >Edit</Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

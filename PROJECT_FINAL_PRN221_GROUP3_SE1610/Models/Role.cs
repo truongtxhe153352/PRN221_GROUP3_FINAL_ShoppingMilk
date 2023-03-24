@@ -10,8 +10,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             Users = new HashSet<User>();
         }
 
-        public string? RoleName { get; set; }
         public long RoleId { get; set; }
+        public string? RoleName { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }

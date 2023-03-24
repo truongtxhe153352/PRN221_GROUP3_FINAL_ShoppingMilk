@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 {
@@ -9,7 +10,6 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
         {
             Milk = new HashSet<Milk>();
             Orders = new HashSet<Order>();
-            Roles = new HashSet<Role>();
         }
 
         public long UserId { get; set; }
@@ -21,10 +21,10 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
         public string? Phone { get; set; }
         public string? Email { get; set; }
         public string? Gender { get; set; }
+        public long? RoleId { get; set; }
 
+        public virtual Role? Role { get; set; }
         public virtual ICollection<Milk> Milk { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
-
-        public virtual ICollection<Role> Roles { get; set; }
     }
 }

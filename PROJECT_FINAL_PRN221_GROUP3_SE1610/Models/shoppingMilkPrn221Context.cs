@@ -177,17 +177,13 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             {
                 entity.ToTable("Order_Detail");
 
-                entity.Property(e => e.OrderDetailId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("orderDetail_id");
+                entity.Property(e => e.OrderDetailId).HasColumnName("orderDetail_id");
 
                 entity.Property(e => e.MilkId).HasColumnName("milkId");
 
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
-                entity.Property(e => e.Quantity)
-                    .ValueGeneratedOnAdd()
-                    .HasColumnName("quantity");
+                entity.Property(e => e.Quantity).HasColumnName("quantity");
 
                 entity.HasOne(d => d.Milk)
                     .WithMany(p => p.OrderDetails)
@@ -204,29 +200,12 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             {
                 entity.ToTable("Role");
 
-                entity.Property(e => e.RoleId).HasColumnName("roleId");
+                entity.Property(e => e.RoleId).HasColumnName("role_id");
 
                 entity.Property(e => e.RoleName)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("role_name");
-
-                entity.HasMany(d => d.Users)
-                    .WithMany(p => p.Roles)
-                    .UsingEntity<Dictionary<string, object>>(
-                        "UseRole",
-                        l => l.HasOne<User>().WithMany().HasForeignKey("UserId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Use_Role_User"),
-                        r => r.HasOne<Role>().WithMany().HasForeignKey("RoleId").OnDelete(DeleteBehavior.ClientSetNull).HasConstraintName("FK_Use_Role_Role1"),
-                        j =>
-                        {
-                            j.HasKey("RoleId", "UserId");
-
-                            j.ToTable("Use_Role");
-
-                            j.IndexerProperty<long>("RoleId").HasColumnName("roleId");
-
-                            j.IndexerProperty<long>("UserId").ValueGeneratedOnAdd().HasColumnName("userId");
-                        });
             });
 
             modelBuilder.Entity<User>(entity =>
@@ -267,10 +246,17 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
                     .IsUnicode(false)
                     .HasColumnName("phone");
 
+                entity.Property(e => e.RoleId).HasColumnName("role_id");
+
                 entity.Property(e => e.Username)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("username");
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.Users)
+                    .HasForeignKey(d => d.RoleId)
+                    .HasConstraintName("FK_Users_Role");
             });
 
             OnModelCreatingPartial(modelBuilder);
