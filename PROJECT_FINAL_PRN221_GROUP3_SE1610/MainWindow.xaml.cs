@@ -92,6 +92,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 MyProfile myProfile = new MyProfile(user1);
                 myProfile.Show();
             }
+        }
             
         private void btnCart_Click(object sender, RoutedEventArgs e)
         {
