@@ -21,7 +21,7 @@
                       >
             </ComboBox>
             <Button Grid.Row="4" Margin="10" Grid.Column="1" Content="Search"
-                Height="35" Width="100" HorizontalAlignment="Right" Click="btnSearch_Click"/>
+                Height="35" Width="100" HorizontalAlignment="Right"/>
         </StackPanel>
 
         <Grid x:Name="listView" Margin="0,112,0,56" Grid.RowSpan="3">
@@ -55,8 +55,8 @@
                 <Button Content="Add to cart" Visibility="Hidden" Width="100"></Button>
             </StackPanel>
         </Grid>
-        <Button Name="btnPrevious" Content="Previous" Margin="372,43,728,39" Grid.Row="2" Click="previousPage_Click"/>
-        <Button Name="btnNext" Content="Next" Margin="670,43,430,39" Grid.Row="2" Click="nextPage_Click"/>
+        <Button Name="btnPrevious" Content="Previous" Margin="372,43,728,39" Grid.Row="2"/>
+        <Button Name="btnNext" Content="Next" Margin="670,43,430,39" Grid.Row="2"/>
 
     </Grid>
 </Window>

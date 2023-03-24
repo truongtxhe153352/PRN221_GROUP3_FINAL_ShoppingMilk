@@ -96,5 +96,12 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             cartWindows.Show();
             this.Close();
         }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow home = new HomeWindow();
+            home.Show();
+            this.Close();
+        }
     }
 }

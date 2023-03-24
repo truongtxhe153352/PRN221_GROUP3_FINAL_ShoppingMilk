@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button x:Name="btnLogin" Margin="10" Width="100" Height="30px" Content="Login" Click="btnLogin_Click"/>
-        <Button x:Name="btnCart" Margin="350,150,350,254" Width="100" Height="30px" Content="Cart" Click="btnCart_Click"/>
+    <Grid Height="300" Width="Auto">
+        <Button x:Name="btnLogin" Margin="350,178,350,92" Width="Auto" Height="30px" Content="Login" Click="btnLogin_Click"/>
+        <Button x:Name="btnCart" Margin="350,95,350,175" Width="Auto" Height="30px" Content="Cart" Click="btnCart_Click"/>
+        <Button x:Name="btnHome" Margin="350,135,350,135" Width="Auto" Height="30px" Content="Home page" Click="btnHome_Click"/>
     </Grid>
 </Window>
