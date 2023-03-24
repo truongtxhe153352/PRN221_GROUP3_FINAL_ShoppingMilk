@@ -11,19 +11,20 @@
             <ColumnDefinition Width="223*"/>
             <ColumnDefinition Width="685*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="btnCheckout" Content="Thanh toán" IsEnabled="False" HorizontalAlignment="Left" Margin="72,53,0,0" VerticalAlignment="Top" Height="37" Width="121" FontSize="16" Click="btnCheckout_Click"/>
-        <Label x:Name="lblTotal" Content="Tổng tiền:" HorizontalAlignment="Left" Margin="65,369,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Grid.Column="1"/>
+        <Button x:Name="btnCheckout" Content="Check out" IsEnabled="False" HorizontalAlignment="Left" Margin="72,53,0,0" VerticalAlignment="Top" Height="37" Width="121" FontSize="16" Click="btnCheckout_Click"/>
+        <Button x:Name="btnBack" Content="Back"  HorizontalAlignment="Left" Margin="564,53,0,0" VerticalAlignment="Top" Height="37" Width="121" FontSize="16" Click="btnBack_Click" Grid.Column="1"/>
+        <Label x:Name="lblTotal" Content="Total:" HorizontalAlignment="Left" Margin="65,369,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Grid.Column="1"/>
         <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="190,374,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="22" Grid.Column="1"/>
         <ListView Margin="42,113,27,70" Name="lvCart" Grid.ColumnSpan="2" >
             <ListView.View>
                 <GridView>
 
                     <GridViewColumn Header="MilkId" Width="100" DisplayMemberBinding="{Binding Path=MilkId}" />
-                    <GridViewColumn Header="Tên" Width="280" DisplayMemberBinding="{Binding Path=Milk.Name}" />
-                    <GridViewColumn Header="Giá tiền" Width="100" DisplayMemberBinding="{Binding Path=Milk.Price}" />
-                    <GridViewColumn Header="Số lượng" Width="100" DisplayMemberBinding="{Binding Path=Quantity}" />
-                    <GridViewColumn Header="Ngày đặt" Width="170" DisplayMemberBinding="{Binding Path=DateCreate}" />
-                    <GridViewColumn Header="Xóa khỏi giỏ hàng" Width="100">
+                    <GridViewColumn Header="Name" Width="280" DisplayMemberBinding="{Binding Path=Milk.Name}" />
+                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Path=Milk.Price}" />
+                    <GridViewColumn Header="Quantity" Width="100" DisplayMemberBinding="{Binding Path=Quantity}" />
+                    <GridViewColumn Header="Date Created" Width="170" DisplayMemberBinding="{Binding Path=DateCreate}" />
+                    <GridViewColumn Header="Remove" Width="100">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
                                 <Button
