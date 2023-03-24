@@ -49,6 +49,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 btnMyProfile.Visibility = Visibility.Visible;
                 btnManagerUser.Visibility = Visibility.Visible;
                 btnManagerOrder.Visibility = Visibility.Visible;
+                btnManagerMilk.Visibility = Visibility.Visible;
                 bindingUser(user1);
             }
             // bindingCart();
@@ -121,6 +122,12 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             ManageOrder manageOrder = new ManageOrder();
             manageOrder.ShowDialog();
+        }
+
+        private void btnManagerMilk_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerMilk managerMilk = new ManagerMilk();
+            managerMilk.ShowDialog();
         }
     }
 }

@@ -25,6 +25,8 @@
                         Click="btnManagerUser_Click" Visibility="Collapsed"/>
                 <Button x:Name="btnManagerOrder" Margin="10" Height="30px"  Width="100" Content="Manager Order" Click="btnManagerOrder_Click" 
                          Visibility="Collapsed"/>
+                <Button x:Name="btnManagerMilk" Margin="10" Height="30px"  Width="100" Content="Manager Milk" Click="btnManagerMilk_Click" 
+                         Visibility="Collapsed"/>
             </StackPanel>
         </Grid>
 
