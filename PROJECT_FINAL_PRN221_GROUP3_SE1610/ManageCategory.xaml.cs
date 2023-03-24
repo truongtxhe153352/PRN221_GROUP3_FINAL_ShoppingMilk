@@ -1,4 +1,5 @@
-﻿using PROJECT_FINAL_PRN221_GROUP3_SE1610.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using PROJECT_FINAL_PRN221_GROUP3_SE1610.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,27 +29,104 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         }
         private void loadData()
         {
-            lvCate.ItemsSource = context.Categories.ToList();
+            lvCate.ItemsSource = context.Categories.Include(c => c.Brand).ToList();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            var listSearchCate = context.Categories.Where(o => o.Name.Contains(txtSearch.Text)).Include(c => c.Brand).ToList();
+            lvCate.ItemsSource = listSearchCate;
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (!string.IsNullOrEmpty(txtCateName.Text) || cbBrand.SelectedIndex == null)
+                {
+                    MessageBox.Show("Add faild");
+                    return;
+                }
+                Category cate = new Category();
+                cate.Name = txtCateName.Text;
+                cate.BrandId = cbBrand.SelectedIndex;
+                context.Categories.Add(cate);
+                if (context.SaveChanges() > 0)
+                {
+                    MessageBox.Show("add successfully");
+                    loadData();
+                }
+                else
+                {
+                    MessageBox.Show("add fail");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("add fail");
+            }
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-
+            try
+            {
+                if (!string.IsNullOrEmpty(txtCateName.Text) || cbBrand.SelectedIndex == null)
+                {
+                    MessageBox.Show("Update faild");
+                    return;
+                }
+                Category cate = lvCate.SelectedItem as Category;
+                cate.Name = txtCateName.Text;
+                cate.BrandId = cbBrand.SelectedIndex;
+                context.Categories.Update(cate);
+                if (context.SaveChanges() > 0)
+                {
+                    MessageBox.Show("Update successfully");
+                    loadData();
+                }
+                else
+                {
+                    MessageBox.Show("Update fail");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Update fail");
+            }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var cate = lvCate.SelectedItem as Category;
+                if (cate != null)
+                {
+                    MessageBoxResult messageResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                    if (messageResult == MessageBoxResult.No)
+                    {
+                        return;
+                    }
+                    try
+                    {
+                        context.Categories.Remove(cate);
+                        if (context.SaveChanges() > 0)
+                        {
+                            MessageBox.Show("Delete success");
+                            loadData();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
     }
 }

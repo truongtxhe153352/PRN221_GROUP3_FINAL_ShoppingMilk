@@ -40,7 +40,7 @@
                              Text="{Binding Path=Name,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvCate, Path=SelectedItem}"/>
                     <Label Name="lbBrandName" Content="Brand Name"/>
-                    <ComboBox></ComboBox>
+                    <ComboBox Name="cbBrand"></ComboBox>
                 </StackPanel>
                 <!--StackPanel for Button controls-->
                 <StackPanel Grid.Row="1" Orientation="Horizontal"
