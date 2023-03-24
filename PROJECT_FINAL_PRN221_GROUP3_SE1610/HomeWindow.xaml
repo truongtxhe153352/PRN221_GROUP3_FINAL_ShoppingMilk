@@ -5,58 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
-        Title="ShoppingWindow" Height="800" Width="1200" Background="LightBlue" FontWeight="Bold">
+        Title="ShoppingWindow" Height="1000" Width="1200" Background="LightBlue" FontWeight="Bold">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="28*" />
-            <RowDefinition Height="137*"/>
+            <RowDefinition Height="150*"/>
             <RowDefinition Height="31*"/>
-            <RowDefinition Height="0*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Width="500" HorizontalAlignment="Left" >
-            <Label Content="Gender: " Height="25"></Label>
-            <ComboBox Name="cbGenre" HorizontalAlignment="Left" Height="40" Width="267"
+        <StackPanel Grid.Row="0" Width="1000" HorizontalAlignment="Left" >
+            <StackPanel>
+                <TextBox Name="txtSearch" Height="40" Width="500"
+                         VerticalContentAlignment="Center"
+                         HorizontalAlignment="Left" Margin="10"></TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Category: " Height="25"></Label>
+                <ComboBox Name="cbCategory" HorizontalAlignment="Left" Height="40" Width="267" VerticalContentAlignment="Center"
                       DisplayMemberPath="Name"
-                      SelectedValue="{Binding Path=Genre.GenreId,Mode=OneWay}" 
+                      SelectedValue="{Binding Path=Category.Name,Mode=OneWay}" 
                       >
-            </ComboBox>
-            <Button Grid.Row="4" Margin="10" Grid.Column="1" Content="Search"
-                Height="35" Width="100" HorizontalAlignment="Right"/>
+                </ComboBox>
+                <Label Content="Brand: " Height="25"></Label>
+                <ComboBox Name="cbBrand" HorizontalAlignment="Left" Height="40" Width="267" VerticalContentAlignment="Center"
+                      DisplayMemberPath="BrandName"
+                      SelectedValue="{Binding Path=Brand.BrandName,Mode=OneWay}" 
+                      >
+                </ComboBox>
+                <Button Grid.Row="4" Margin="10" Grid.Column="1" Content="Search"
+                Height="35" Width="100" HorizontalAlignment="Right" Click="btnSearch_Click"/>
+            </StackPanel>
+
         </StackPanel>
 
-        <Grid x:Name="listView" Margin="0,112,0,56" Grid.RowSpan="3">
+        <Grid x:Name="listView" Margin="0,7,0,102" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Width="300" Height="200">
+            <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" Width="300" Height="250">
                 <Label Foreground="Red" Height="30" HorizontalAlignment="Center"></Label>
-                <Image Height="100" Width="100"></Image>
-                <Button Content="Add to cart" Visibility="Hidden" Width="100"></Button>
+                <Image Height="150" Width="150"></Image>
+                <Label x:Name="demo0" Height="30" HorizontalAlignment="Center"></Label>
+                <Button Content="Add to cart" Visibility="Hidden" Width="100" Height="Auto"></Button>
             </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Width="300" Height="200">
+            <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" Width="300" Height="250">
                 <Label Foreground="Red" Height="30" HorizontalAlignment="Center"></Label>
-                <Image Height="100" Width="100"></Image>
-                <Button Content="Add to cart" Visibility="Hidden" Width="100"></Button>
+                <Image Height="150" Width="150"></Image>
+                <Label x:Name="demo1" Height="30" HorizontalAlignment="Center"></Label>
+                <Button Content="Add to cart" Visibility="Hidden" Width="100" Height="Auto"></Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Width="300" Height="200" Margin="0,84,0,52" Grid.RowSpan="2">
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Width="300" Height="250" Margin="0,84,0,52" Grid.RowSpan="2">
                 <Label Foreground="Red" Height="30" HorizontalAlignment="Center"></Label>
-                <Image Height="100" Width="100"></Image>
-                <Button Content="Add to cart" Visibility="Hidden" Width="100"></Button>
+                <Image Height="150" Width="150"></Image>
+                <Label x:Name="demo2" Height="30" HorizontalAlignment="Center"></Label>
+                <Button Content="Add to cart" Visibility="Hidden" Width="100" Height="Auto"></Button>
             </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Width="300" Height="200" Margin="0,84,0,52" Grid.RowSpan="2">
+            <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" Width="300" Height="250" Margin="0,84,0,52" Grid.RowSpan="2" >
                 <Label Foreground="Red" Height="30" HorizontalAlignment="Center"></Label>
-                <Image Height="100" Width="100"></Image>
-                <Button Content="Add to cart" Visibility="Hidden" Width="100"></Button>
+                <Image Height="150" Width="150"></Image>
+                <Label x:Name="demo3" Height="30" HorizontalAlignment="Center"></Label>
+                <Button Content="Add to cart" Visibility="Hidden" Width="100" Height="Auto"></Button>
             </StackPanel>
         </Grid>
-        <Button Name="btnPrevious" Content="Previous" Margin="372,43,728,39" Grid.Row="2"/>
-        <Button Name="btnNext" Content="Next" Margin="670,43,430,39" Grid.Row="2"/>
-
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,57,0,0">
+            <Button Name="btnPreviousPage" Content="Previous" Margin="40 0" Height="40" Width="90" Click="btnPreviousPage_Click" ></Button>
+            <Button Name="btnNextPage" Content="Next" Margin="40 0" Height="40" Width="90" Click="btnNextPage_Click" ></Button>
+        </StackPanel>
     </Grid>
 </Window>
