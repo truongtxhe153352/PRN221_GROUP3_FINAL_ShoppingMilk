@@ -31,7 +31,7 @@
                              />-->
                     <Label Name="lbUserId" Content="User Id"/>
                     <TextBox Name="txtUserId" HorizontalAlignment="Stretch"
-                             Height="25"
+                             Height="25" IsEnabled="False"
                              Text="{Binding Path=UserId,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvUser, Path=SelectedItem}"/>
                     <Label Name="lbUsername" Content="User name"/>

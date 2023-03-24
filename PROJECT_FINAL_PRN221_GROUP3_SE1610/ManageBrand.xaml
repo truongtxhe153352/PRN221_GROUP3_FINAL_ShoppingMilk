@@ -31,7 +31,7 @@
                              />-->
                     <Label Name="lbBrandId" Content="Brand ID"/>
                     <TextBox Name="txtBrandId" HorizontalAlignment="Stretch"
-                             Height="25"
+                             Height="25" IsEnabled="False"
                              Text="{Binding Path=BrandId,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvBrand, Path=SelectedItem}"/>
                     <Label Name="lbBrandName" Content="BrandName"/>

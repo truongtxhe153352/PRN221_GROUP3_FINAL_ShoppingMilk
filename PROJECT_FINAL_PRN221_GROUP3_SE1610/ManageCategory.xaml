@@ -31,7 +31,7 @@
                              />-->
                     <Label Name="lbCateId" Content="Category ID"/>
                     <TextBox Name="txtCateId" HorizontalAlignment="Stretch"
-                             Height="25"
+                             Height="25" IsEnabled="False"
                              Text="{Binding Path=CategoryId,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvCate, Path=SelectedItem}"/>
                     <Label Name="lbCateName" Content="Category Name"/>
