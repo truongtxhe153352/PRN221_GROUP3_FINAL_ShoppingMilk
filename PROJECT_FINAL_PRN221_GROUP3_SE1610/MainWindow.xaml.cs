@@ -47,6 +47,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 User user1 = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
                 isLoggedIn = true;
                 btnMyProfile.Visibility = Visibility.Visible;
+                btnManagerUser.Visibility = Visibility.Visible;
+                btnManagerOrder.Visibility = Visibility.Visible;
                 bindingUser(user1);
             }
             // bindingCart();
@@ -113,6 +115,12 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             ManagerUser mU = new ManagerUser();
             mU.Show();
             this.Close();
+        }
+
+        private void btnManagerOrder_Click(object sender, RoutedEventArgs e)
+        {
+            ManageOrder manageOrder = new ManageOrder();
+            manageOrder.ShowDialog();
         }
     }
 }

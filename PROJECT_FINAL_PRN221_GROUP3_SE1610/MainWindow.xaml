@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="500" Width="1000">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -21,7 +21,10 @@
                 <!--<Button x:Name="btnLogin"  Width="Auto" Height="30px" Content="Login" Click="btnLogin_Click"/>-->
                 <Button x:Name="btnCart" Margin="10" Width="100" Height="30px" Content="Cart" Click="btnCart_Click"/>
                 <Button x:Name="btnHome" Margin="10" Width="100" Height="30px" Content="Home page" Click="btnHome_Click"/>
-                <Button x:Name="btnManagerUser" Margin="10" Height="30px"  Width="100" Content="Manager User" Click="btnManagerUser_Click"/>
+                <Button x:Name="btnManagerUser" Margin="10" Height="30px"  Width="100" Content="Manager User" 
+                        Click="btnManagerUser_Click" Visibility="Collapsed"/>
+                <Button x:Name="btnManagerOrder" Margin="10" Height="30px"  Width="100" Content="Manager Order" Click="btnManagerOrder_Click" 
+                         Visibility="Collapsed"/>
             </StackPanel>
         </Grid>
 

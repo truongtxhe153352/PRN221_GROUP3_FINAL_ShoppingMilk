@@ -75,36 +75,38 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 }
                 else
                 {
-                        if (userLogin.Role.RoleId == 1)
-                        {
-                            isLoggedIn = true;
-                            MessageBox.Show("Login User successfully!!!!");
-                            Settings.UserName = userLogin.Username;
-                            ShoppingCart cart = ShoppingCart.GetCart();
-                            cart.MigrateCart();
-                            //Settings.Role = userLogin.Roles.n;
-                            MainWindow mainWindow = new MainWindow(userLogin);
-                            MyProfile profile = new MyProfile(userLogin);
-                            mainWindow.Show();
-                            this.Close();
-                        }
-                        else if (userLogin.Role.RoleId == 2)
-                        {
-                            MessageBox.Show("Login Admin successfully!!!!");
-                            //Settings.UserName = userLogin.Name;
-                            // Settings.Role = userLogin.Roles.;
-                            Settings.UserName = userLogin.Username;
-                            ShoppingCart cart = ShoppingCart.GetCart();
-                            cart.MigrateCart();
-                            MainWindow mainWindow = new MainWindow(userLogin);
-                            mainWindow.Show();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Eo co gi o day");
-                        }
+                    if (userLogin.Role.RoleId == 1)
+                    {
+                        isLoggedIn = true;
+                        MessageBox.Show("Login User successfully!!!!");
+                        Settings.UserName = userLogin.Username;
+                        ShoppingCart cart = ShoppingCart.GetCart();
+                        cart.MigrateCart();
+                        //Settings.Role = userLogin.Roles.n;
+                        MainWindow mainWindow = new MainWindow(userLogin);
+                        MyProfile profile = new MyProfile(userLogin);
+                        mainWindow.Show();
+                        this.Close();
                     }
+                    else if (userLogin.Role.RoleId == 2)
+                    {
+                        MessageBox.Show("Login Admin successfully!!!!");
+                        //Settings.UserName = userLogin.Name;
+                        // Settings.Role = userLogin.Roles.;
+                        Settings.UserName = userLogin.Username;
+                        ShoppingCart cart = ShoppingCart.GetCart();
+                        cart.MigrateCart();
+                        MainWindow mainWindow = new MainWindow(userLogin);
+                        MyProfile profile = new MyProfile(userLogin);
+
+                        mainWindow.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Eo co gi o day");
+                    }
+                }
             }
             catch (Exception ex)
             {
