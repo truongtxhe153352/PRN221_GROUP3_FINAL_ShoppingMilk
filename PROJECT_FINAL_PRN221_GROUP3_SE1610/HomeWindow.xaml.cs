@@ -27,23 +27,47 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         public HomeWindow()
         {
             InitializeComponent();
-            List<Milk> milks=context.Milk.ToList();
-            List<Category> forFilterCate= context.Categories.ToList();
-            Category category=new Category();
+            List<Milk> milks = context.Milk.ToList();
+            BindingSelection();
+            bindGridFilter(1, 0, 0, "");
+        }
+
+        public void BindingSelection()
+        {
+            List<Category> forFilterCate = context.Categories.ToList();
+            Category category = new Category();
             category.Name = "All";
             forFilterCate.Insert(0, category);
             cbCategory.ItemsSource = forFilterCate;
-            bindGridFilter(1, 0);
+            cbCategory.SelectedIndex = 0;
+
+
+            List<Brand> brands = context.Brands.ToList();
+            Brand brand = new Brand();
+            brand.BrandName = "All";
+            brands.Insert(0, brand);
+            cbBrand.ItemsSource = brands;
+            cbBrand.SelectedIndex = 0;
         }
 
-        private async void bindGridFilter(int pageIndex, long genreId)
+
+        private async void bindGridFilter(int pageIndex, long cateId, long brandId, string keyword)
         {
             int i = 0;
             var query = context.Milk.OrderBy(milk => milk.MilkId);
-            if (genreId != 0)
+            if (cateId != 0)
             {
-                query = context.Milk.Where(milk => milk.Cate.CategoryId == genreId).OrderBy(milk => milk.MilkId);
+                query = query.Where(milk => milk.Cate.CategoryId == cateId).OrderBy(milk => milk.MilkId);
             }
+            if (brandId != 0)
+            {
+                query = query.Where(milk => milk.Cate.Brand.BrandId == brandId).OrderBy(milk => milk.MilkId);
+            }
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                query = query.Where(milk => milk.Name.Contains(keyword)).OrderBy(milk => milk.MilkId);
+            }
+
             List<Milk> list = await PaginatedList<Milk>.CreateAsync(query, pageIndex, 4);
             PaginatedList<Milk> pages = (PaginatedList<Milk>)list;
             foreach (var sp in listView.Children)
@@ -68,6 +92,10 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                             catch
                             {
                             }
+                        }
+                        if (obj is Label label && label.Name.Equals("demo" + i))
+                        {
+                            ((Label)obj).Content = list[i].Cate.Name.ToString() + " - " + list[i].Cate.Brand.BrandName.ToString();
                         }
                         if (obj is Button)
                         {
@@ -97,6 +125,10 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                             {
                             }
                         }
+                        if (obj is Label)
+                        {
+                            ((Label)obj).Content = "";
+                        }
                         if (obj is Button)
                         {
                             ((Button)obj).Visibility = Visibility.Hidden;
@@ -113,9 +145,13 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             Category cate = cbCategory.SelectedItem as Category;
+            long cateId=(cate==null)?0:cate.CategoryId;
+            Brand brand = cbBrand.SelectedItem as Brand;
+            long brandId=(brand==null)?0:brand.BrandId;
             previous = 1;
             next = previous + 1;
-            bindGridFilter(previous, cate.CategoryId);
+            String keyword=txtSearch.Text;
+            bindGridFilter(previous, cateId, brandId, keyword);
         }
     }
 }
