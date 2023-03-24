@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\FU_learning\SPRING_2023\PRN_221\PROJECT_FINAL_PRN221_GROUP3_SE1610\PROJECT_FINAL_PRN221_GROUP3_SE1610\obj\Debug\net6.0-windows\
+D:\University\Semester7\PRN221\FinalProject\PRN221_GROUP3_FINAL_ShoppingMilk\PROJECT_FINAL_PRN221_GROUP3_SE1610\obj\Debug\net6.0-windows\
 PROJECT_FINAL_PRN221_GROUP3_SE1610
 none
 false
 TRACE;DEBUG;NET;NET6_0;NETCOREAPP
-D:\FU_learning\SPRING_2023\PRN_221\PROJECT_FINAL_PRN221_GROUP3_SE1610\PROJECT_FINAL_PRN221_GROUP3_SE1610\App.xaml
-11407045341
+D:\University\Semester7\PRN221\FinalProject\PRN221_GROUP3_FINAL_ShoppingMilk\PROJECT_FINAL_PRN221_GROUP3_SE1610\App.xaml
+12727343840
 
-13841657254
-220-210023190
-MainWindow.xaml;
+28252611049
+220359977
+CartWindow.xaml;CheckoutWindow.xaml;HomeWindow.xaml;Login.xaml;MainWindow.xaml;ManageBrand.xaml;ManageCategory.xaml;ManageOrder.xaml;ManagerUser.xaml;MyProfile.xaml;Register.xaml;ViewDetails.xaml;
 
-False
+True
 

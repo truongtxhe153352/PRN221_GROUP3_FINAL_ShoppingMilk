@@ -21,12 +21,13 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         shoppingMilkPrn221Context context = new shoppingMilkPrn221Context();
         int previous = 1;
         int next = 0;
+        ShoppingCart cartMilks = ShoppingCart.GetCart();
         public HomeWindow()
         {
             InitializeComponent();
             List<Milk> milks = context.Milk.ToList();
             BindingSelection();
-            next = 1;
+            next = previous+1;
             bindGridFilter(1, 0, 0, "");
         }
 
@@ -173,6 +174,16 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             previous = next;
             next += 1;
             bindGridFilter(previous, cateId, brandId, keyword);
+        }
+
+        private void btnAddToCart_Click(object sender, RoutedEventArgs e)
+        {
+            Button button = sender as Button;
+            int value = (int)button.CommandParameter;
+            Milk milk = context.Milk.SingleOrDefault(al => al.MilkId == value);
+            cartMilks.AddToCart(milk);
+            CartWindow cart = new CartWindow(cartMilks);
+            cart.ShowDialog();
         }
     }
 }
