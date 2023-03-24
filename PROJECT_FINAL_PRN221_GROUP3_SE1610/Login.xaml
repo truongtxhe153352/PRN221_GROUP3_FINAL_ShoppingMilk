@@ -32,7 +32,7 @@
                     Content="Đăng ký"  TextElement.FontStyle="Italic" Foreground="Blue" Click="btnRegister_Click">
 
         </Button>
-        <Label Grid.Row="3" Grid.Column="3" Content="Quên mật khẩu" Margin="5" TextElement.FontStyle="Italic" Foreground="Blue">
+        <!--<Label Grid.Row="3" Grid.Column="3" Content="Quên mật khẩu" Margin="5" TextElement.FontStyle="Italic" Foreground="Blue">
             <Label.Style>
                 <Style TargetType="Label">
                     <Style.Triggers>
@@ -43,7 +43,7 @@
                     </Style.Triggers>
                 </Style>
             </Label.Style>
-        </Label>
+        </Label>-->
 
         <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="4"
                     Orientation="Horizontal" HorizontalAlignment="Center">

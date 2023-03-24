@@ -142,6 +142,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610 {
             }
             _contentLoaded = true;
             System.Uri resourceLocater = new System.Uri("/PROJECT_FINAL_PRN221_GROUP3_SE1610;component/viewdetails.xaml", System.UriKind.Relative);
+
+            // System.Uri resourceLocater = new System.Uri("/PROJECT_FINAL_PRN221_GROUP3_SE1610;V1.0.0.0;component/viewdetails.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ViewDetails.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

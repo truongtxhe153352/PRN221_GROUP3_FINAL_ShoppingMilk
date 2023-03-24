@@ -5,45 +5,61 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
-        Title="CartWindow" Height="450" Width="944" Background="LightBlue">
-    <Grid>
+        Title="CartWindow" Height="568" Width="944" Background="LightBlue">
+    <Grid Margin="0,14,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="223*"/>
             <ColumnDefinition Width="685*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="btnCheckout" Content="Check out" IsEnabled="False" HorizontalAlignment="Left" Margin="72,53,0,0" VerticalAlignment="Top" Height="37" Width="121" FontSize="16" Click="btnCheckout_Click"/>
         <Button x:Name="btnBack" Content="Back"  HorizontalAlignment="Left" Margin="564,53,0,0" VerticalAlignment="Top" Height="37" Width="121" FontSize="16" Click="btnBack_Click" Grid.Column="1"/>
-        <Label x:Name="lblTotal" Content="Total:" HorizontalAlignment="Left" Margin="65,369,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Grid.Column="1"/>
-        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="190,374,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" FontSize="22" Grid.Column="1"/>
-        <ListView Margin="42,113,27,70" Name="lvCart" Grid.ColumnSpan="2" >
-            <ListView.View>
-                <GridView>
+        <Label x:Name="lblTotal" Content="Total:" HorizontalAlignment="Left" Margin="45,472,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="24" Grid.Column="1" Height="54"/>
+        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Margin="168,481,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" FontSize="22" Grid.Column="1" Height="35" RenderTransformOrigin="0.498,0.117"/>
+        <DockPanel VerticalAlignment="Top" Height="352" Grid.ColumnSpan="2" Margin="0,129,0,0">
+            <Grid Height="450" Width="900">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="179*"/>
+                    <RowDefinition Height="271*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Background="LightBlue" Orientation="Vertical"
+                            HorizontalAlignment="Left" Width="334" Margin="0,0,0,0" Grid.RowSpan="2">
+                    <Label Name="lbQuantiy" Content="Quantiy" Width="249"/>
+                    <TextBox x:Name="txtQuantiy"
+                             Height="34" 
+                             Text="{Binding Path=Quantity, Mode=OneWay}"
+                             DataContext="{Binding SelectedItem, ElementName=lvCart}" Width="260"/>
+                </StackPanel>
+                <Button x:Name="btnSavePrice" Content="Save" HorizontalAlignment="Left"  Height="32" Width="90" FontSize="16" Click="btnSavePrice_Click" Margin="317,27,0,120"/>
+                <ListView Margin="32,85,10,124" Name="lvCart" Grid.RowSpan="2" >
+                    <ListView.View>
+                        <GridView>
 
-                    <GridViewColumn Header="MilkId" Width="100" DisplayMemberBinding="{Binding Path=MilkId}" />
-                    <GridViewColumn Header="Name" Width="280" DisplayMemberBinding="{Binding Path=Milk.Name}" />
-                    <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Path=Milk.Price}" />
-                    <GridViewColumn Header="Quantity" Width="100" DisplayMemberBinding="{Binding Path=Quantity}" />
-                    <GridViewColumn Header="Date Created" Width="170" DisplayMemberBinding="{Binding Path=DateCreate}" />
-                    <GridViewColumn Header="Remove" Width="100">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button
+                            <GridViewColumn Header="MilkId" Width="100" DisplayMemberBinding="{Binding Path=MilkId}" />
+                            <GridViewColumn Header="Name" Width="280" DisplayMemberBinding="{Binding Path=Milk.Name}" />
+                            <GridViewColumn Header="Price" Width="100" DisplayMemberBinding="{Binding Path=Milk.Price}" />
+                            <GridViewColumn Header="Quantity" Width="100" DisplayMemberBinding="{Binding Path=Quantity}" />
+                            <GridViewColumn Header="Date Created" Width="170" DisplayMemberBinding="{Binding Path=DateCreate}" />
+                            <GridViewColumn Header="Remove" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
                        Content="Remove from cart"
                        Margin="0"
                        VerticalAlignment="Center"
                                     Click="btnRemove_Click"
                                     CommandParameter="{Binding}"
                                 />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
 
 
-                </GridView>
+                        </GridView>
 
-            </ListView.View>
+                    </ListView.View>
 
-        </ListView>
-
+                </ListView>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Window>
