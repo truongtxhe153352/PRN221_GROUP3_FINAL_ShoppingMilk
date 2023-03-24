@@ -100,7 +100,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                             Button btnAdd = (Button)obj;
                             btnAdd.Visibility = Visibility.Visible;
                             btnAdd.CommandParameter = pages[i].MilkId;
-                            //btnAdd.Click += CartOnClick;
+                            btnAdd.Click += CartOnClick;
                         }
                     }
                     i++;
@@ -176,10 +176,10 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             bindGridFilter(previous, cateId, brandId, keyword);
         }
 
-        private void btnAddToCart_Click(object sender, RoutedEventArgs e)
+        private void CartOnClick(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            int value = (int)button.CommandParameter;
+            int value = (int)(long)button.CommandParameter;
             Milk milk = context.Milk.SingleOrDefault(al => al.MilkId == value);
             cartMilks.AddToCart(milk);
             CartWindow cart = new CartWindow(cartMilks);

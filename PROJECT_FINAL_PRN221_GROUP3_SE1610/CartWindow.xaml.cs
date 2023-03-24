@@ -63,14 +63,14 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         private void btnCheckout_Click(object sender, RoutedEventArgs e)
         {
             CheckoutWindow checkoutWindow = new CheckoutWindow();
-            checkoutWindow.ShowDialog();
+            checkoutWindow.Show();
             this.Close();
         }
 
         private void btnBack_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
+            mainWindow.Show();
             this.Close();
         }
 
