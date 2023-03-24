@@ -103,5 +103,12 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             home.Show();
             this.Close();
         }
+
+        private void btnManagerUser_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerUser mU = new ManagerUser();
+            mU.Show();
+            this.Close();
+        }
     }
 }
