@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
 {
-    /// <summary>
-    /// Interaction logic for HomeWindow.xaml
-    /// </summary>
     public partial class HomeWindow : Window
     {
         shoppingMilkPrn221Context context = new shoppingMilkPrn221Context();
@@ -29,6 +26,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             InitializeComponent();
             List<Milk> milks = context.Milk.ToList();
             BindingSelection();
+            next = 1;
             bindGridFilter(1, 0, 0, "");
         }
 
@@ -67,8 +65,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             {
                 query = query.Where(milk => milk.Name.Contains(keyword)).OrderBy(milk => milk.MilkId);
             }
-
-            List<Milk> list = await PaginatedList<Milk>.CreateAsync(query, pageIndex, 4);
+            List<Milk> list = await PaginatedList<Milk>.CreateAsync(query, pageIndex, 3);
             PaginatedList<Milk> pages = (PaginatedList<Milk>)list;
             foreach (var sp in listView.Children)
             {
@@ -138,19 +135,43 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 }
 
             }
-            btnPrevious.IsEnabled = pages.HasPreviousPage;
-            btnNext.IsEnabled = pages.HasNextPage;
+            btnPreviousPage.IsEnabled = pages.HasPreviousPage;
+            btnNextPage.IsEnabled = pages.HasNextPage;
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             Category cate = cbCategory.SelectedItem as Category;
-            long cateId=(cate==null)?0:cate.CategoryId;
+            long cateId = (cate == null) ? 0 : cate.CategoryId;
             Brand brand = cbBrand.SelectedItem as Brand;
-            long brandId=(brand==null)?0:brand.BrandId;
+            long brandId = (brand == null) ? 0 : brand.BrandId;
+            String keyword = txtSearch.Text;
             previous = 1;
             next = previous + 1;
-            String keyword=txtSearch.Text;
+            bindGridFilter(previous, cateId, brandId, keyword);
+        }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+            Category cate = cbCategory.SelectedItem as Category;
+            long cateId = (cate == null) ? 0 : cate.CategoryId;
+            Brand brand = cbBrand.SelectedItem as Brand;
+            long brandId = (brand == null) ? 0 : brand.BrandId;
+            String keyword = txtSearch.Text;
+            next = previous;
+            previous -= 1;
+            bindGridFilter(previous, cateId, brandId, keyword);
+        }
+
+        private void btnNextPage_Click(object sender, RoutedEventArgs e)
+        {
+            Category cate = cbCategory.SelectedItem as Category;
+            long cateId = (cate == null) ? 0 : cate.CategoryId;
+            Brand brand = cbBrand.SelectedItem as Brand;
+            long brandId = (brand == null) ? 0 : brand.BrandId;
+            String keyword = txtSearch.Text;
+            previous = next;
+            next += 1;
             bindGridFilter(previous, cateId, brandId, keyword);
         }
     }
