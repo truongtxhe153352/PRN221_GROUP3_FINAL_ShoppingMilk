@@ -13,12 +13,12 @@
         <Button x:Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="536,68,0,0" VerticalAlignment="Top" FontSize="16" Width="68" Height="27" Click="btnSearch_Click"/>
 
         <DockPanel VerticalAlignment="Top" Margin="60,100,16,0" Height="652" Width="800">
-            <Grid Height="607">
+            <Grid Height="605" RenderTransformOrigin="0.507,0.501">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="14*"/>
-                    <RowDefinition Height="275*"/>
-                    <RowDefinition Height="58*"/>
+                    <RowDefinition Height="Auto" MinHeight="298.76"/>
+                    <RowDefinition Height="0*"/>
+                    <RowDefinition Height="257*"/>
+                    <RowDefinition Height="52*"/>
                 </Grid.RowDefinitions>
                 <!--StackPanel for Label and TextBox controls-->
                 <StackPanel Background="LightBlue" Orientation="Vertical"
@@ -49,6 +49,10 @@
                              Height="25"
                              Text="{Binding Path=FullName,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvUser, Path=SelectedItem}"/>
+                    <Label Name="Role" Content="Role"/>
+                    <ComboBox>
+
+                    </ComboBox>
                 </StackPanel>
                 <StackPanel Margin="450,2,-50,2">
                     <Label x:Name="lbAddress" Content="Address" Height="27"/>
@@ -79,8 +83,8 @@
 
                 </StackPanel>
                 <!--StackPanel for Button controls-->
-                <StackPanel Grid.Row="2" Orientation="Horizontal"
-                            HorizontalAlignment="Left" Margin="0,8,0,217" Width="790">
+                <StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Left" Margin="0,255,0,227" Width="790" Grid.RowSpan="3">
 
                     <Button x:Name="btnAdd" Margin="10" Width="80" Content="Add"  Height="30" Click="btnAdd_Click"
                             />
@@ -90,7 +94,7 @@
                             />
                 </StackPanel>
                 <!--ListView control-->
-                <ListView Grid.Row="2" Name="lvUser" Width="Auto" Margin="0,74,0,0" Height="217" VerticalAlignment="Top" Grid.RowSpan="2">
+                <ListView Grid.Row="2" Name="lvUser" Width="Auto" Margin="0,32,0,0" Height="235" VerticalAlignment="Top" Grid.RowSpan="2">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="UserId" Width="100"

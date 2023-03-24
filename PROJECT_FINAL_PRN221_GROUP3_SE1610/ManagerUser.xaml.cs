@@ -148,7 +148,35 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                var user = lvUser.SelectedItem as User;
+                if (user != null)
+                {
+                    MessageBoxResult messageResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                    if (messageResult == MessageBoxResult.No)
+                    {
+                        return;
+                    }
+                    try
+                    {
+                        context.Users.Remove(user);
+                        if (context.SaveChanges() > 0)
+                        {
+                            MessageBox.Show("Delete success");
+                            loadData();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
+            }
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
