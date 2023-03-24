@@ -33,12 +33,20 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             Loaded();
         }
 
+        public CartWindow(ShoppingCart cart)
+        {
+            InitializeComponent();
+            cartMilks = cart;
+            lvCart.ItemsSource = cart.GetCartItems();
+            txtTotal.Text = cart.GetTotal().ToString(".00");
+            btnCheckout.IsEnabled = !string.IsNullOrEmpty(Settings.UserName) && cart.GetTotal() > 0;
+        }
+
         private void Loaded()
         {
-            ShoppingCart cart = ShoppingCart.GetCart();
-            lvCart.ItemsSource = cart.GetCartItems();
-            txtTotal.Text = cart.GetTotal().ToString(".000.000 VNĐ");
-            btnCheckout.IsEnabled = !string.IsNullOrEmpty(Settings.UserName) && cart.GetTotal() > 0;
+            lvCart.ItemsSource = cartMilks.GetCartItems();
+            txtTotal.Text = cartMilks.GetTotal().ToString(".000.000 VNĐ");
+            btnCheckout.IsEnabled = !string.IsNullOrEmpty(Settings.UserName) && cartMilks.GetTotal() > 0;
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
