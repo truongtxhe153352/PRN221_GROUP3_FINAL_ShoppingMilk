@@ -93,6 +93,25 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 myProfile.Show();
             }
             
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+            CartWindow cartWindows = new CartWindow();
+            cartWindows.Show();
+            this.Close();
+        }
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow home = new HomeWindow();
+            home.Show();
+            this.Close();
+        }
+
+        private void btnManagerUser_Click(object sender, RoutedEventArgs e)
+        {
+            ManagerUser mU = new ManagerUser();
+            mU.Show();
+            this.Close();
         }
     }
 }

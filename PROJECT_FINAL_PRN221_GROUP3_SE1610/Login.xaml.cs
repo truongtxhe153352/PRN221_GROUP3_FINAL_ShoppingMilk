@@ -80,6 +80,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                             isLoggedIn = true;
                             MessageBox.Show("Login User successfully!!!!");
                             Settings.UserName = userLogin.Username;
+                            ShoppingCart cart = ShoppingCart.GetCart();
+                            cart.MigrateCart();
                             //Settings.Role = userLogin.Roles.n;
                             MainWindow mainWindow = new MainWindow(userLogin);
                             MyProfile profile = new MyProfile(userLogin);
@@ -91,6 +93,9 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                             MessageBox.Show("Login Admin successfully!!!!");
                             //Settings.UserName = userLogin.Name;
                             // Settings.Role = userLogin.Roles.;
+                            Settings.UserName = userLogin.Username;
+                            ShoppingCart cart = ShoppingCart.GetCart();
+                            cart.MigrateCart();
                             MainWindow mainWindow = new MainWindow(userLogin);
                             mainWindow.Show();
                             this.Close();
