@@ -5,18 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="800">
+        Title="MainWindow" Height="500" Width="1000">
 
-    <Grid Width="Auto" >
-        <StackPanel>
-            <Button x:Name="btnLogin" Margin="10" Width="100" Height="30px" Content="Login" Click="btnLogin_Click"/>
-            <Button x:Name="btnMyProfile" Margin="10" Width="100" Height="30px" Content="My Profile" Visibility="Collapsed" 
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="LightBlue">
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="btnLogin" Margin="10" Width="100" Height="30px" Content="Login" Click="btnLogin_Click"/>
+                <Button x:Name="btnMyProfile" Margin="10" Width="100" Height="30px" Content="My Profile" Visibility="Collapsed" 
                     Click="btnMyProfile_Click"/>
-            <!--<Button x:Name="btnLogin"  Width="Auto" Height="30px" Content="Login" Click="btnLogin_Click"/>-->
-            <Button x:Name="btnCart" Margin="10" Width="100" Height="30px" Content="Cart" Click="btnCart_Click"/>
-            <Button x:Name="btnHome" Margin="10" Width="100" Height="30px" Content="Home page" Click="btnHome_Click"/>
-            <Button x:Name="btnManagerUser" Margin="10" Height="30px"  Width="100" Content="Manager User" Click="btnManagerUser_Click"/>
-        </StackPanel>
-         
+                <!--<Button x:Name="btnLogin"  Width="Auto" Height="30px" Content="Login" Click="btnLogin_Click"/>-->
+                <Button x:Name="btnCart" Margin="10" Width="100" Height="30px" Content="Cart" Click="btnCart_Click"/>
+                <Button x:Name="btnHome" Margin="10" Width="100" Height="30px" Content="Home page" Click="btnHome_Click"/>
+                <Button x:Name="btnManagerUser" Margin="10" Height="30px"  Width="100" Content="Manager User" 
+                        Click="btnManagerUser_Click" Visibility="Collapsed"/>
+                <Button x:Name="btnManagerOrder" Margin="10" Height="30px"  Width="100" Content="Manager Order" Click="btnManagerOrder_Click" 
+                         Visibility="Collapsed"/>
+                <Button x:Name="btnManagerMilk" Margin="10" Height="30px"  Width="100" Content="Manager Milk" Click="btnManagerMilk_Click" 
+                         Visibility="Collapsed"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Width="800">
+            <Image Source="https://www.foodsafetynews.com/files/2021/06/illustration-milk-in-glass.jpg" 
+                   Height="400" ></Image>
+        </Grid>
     </Grid>
 </Window>
