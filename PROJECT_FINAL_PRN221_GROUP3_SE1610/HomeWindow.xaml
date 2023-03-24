@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
-        Title="ShoppingWindow" Height="800" Width="1200" Background="LightBlue" FontWeight="Bold">
+        Title="ShoppingWindow" Height="1000" Width="1200" Background="LightBlue" FontWeight="Bold">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="28*" />
@@ -38,7 +38,7 @@
 
         </StackPanel>
 
-        <Grid x:Name="listView" Margin="0,7,0,71" Grid.Row="1" Grid.RowSpan="2">
+        <Grid x:Name="listView" Margin="0,7,0,102" Grid.Row="1" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -73,9 +73,9 @@
                 <Button Content="Add to cart" Visibility="Hidden" Width="100" Height="Auto"></Button>
             </StackPanel>
         </Grid>
-        <StackPanel Orientation="Horizontal" Grid.Row="2" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,58,0,0">
-            <Button Name="btnPrevious" Content="Previous" Margin="40 0" Height="40" Width="90"></Button>
-            <Button Name="btnNext" Content="Next" Margin="40 0" Height="40" Width="90"></Button>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,57,0,0">
+            <Button Name="btnPreviousPage" Content="Previous" Margin="40 0" Height="40" Width="90" Click="btnPreviousPage_Click" ></Button>
+            <Button Name="btnNextPage" Content="Next" Margin="40 0" Height="40" Width="90" Click="btnNextPage_Click" ></Button>
         </StackPanel>
     </Grid>
 </Window>
