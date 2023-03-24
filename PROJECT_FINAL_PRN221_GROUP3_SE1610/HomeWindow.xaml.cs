@@ -26,7 +26,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             InitializeComponent();
             List<Milk> milks = context.Milk.ToList();
             BindingSelection();
-            next = 1;
+            next = previous+1;
             bindGridFilter(1, 0, 0, "");
         }
 
