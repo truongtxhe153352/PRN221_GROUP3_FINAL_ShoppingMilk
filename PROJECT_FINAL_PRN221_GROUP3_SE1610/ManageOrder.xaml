@@ -38,7 +38,8 @@
                     <DatePicker Name="dpOrderDate" HorizontalAlignment="Stretch"
                              Height="25"
                              Text="{Binding Path=OrderDate,Mode=OneWay}"
-                             DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"></DatePicker>
+                             DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"
+                                ></DatePicker>
                     <Label Name="lbAddress" Content="Address"/>
                     <TextBox Name="txtAddress" HorizontalAlignment="Stretch"
                              Height="25"
@@ -59,8 +60,8 @@
                 <StackPanel Grid.Row="1" Orientation="Horizontal"
                             HorizontalAlignment="Left">
 
-                    <Button x:Name="btnAdd" Margin="10" Width="80" Content="Add"  Height="30" Click="btnAdd_Click"
-                            />
+                   
+                           
                     <Button x:Name="btnEdit" Margin="10" Width="80" Content="Edit"  Height="30" Click="btnEdit_Click"
                             />
                     <Button x:Name="btnDelete" Margin="10" Width="80" Content="Delete"  Height="30" Click="btnDelete_Click"
@@ -70,10 +71,12 @@
                 <ListView Grid.Row="2" Name="lvOrder" Width="Auto" Height="Auto">
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Header="Username" Width="120"
+                            <GridViewColumn Header="UserId" Width="50"
+                                                DisplayMemberBinding="{Binding Path=UserId}"/>
+                            <GridViewColumn Header="Username" Width="80"
                                                 DisplayMemberBinding="{Binding Path=Username}"/>
                             <GridViewColumn Header="OrderDate" Width="120"
-                                                DisplayMemberBinding="{Binding Path=OrderDate}"/>
+                                                DisplayMemberBinding="{Binding Path=OrderDate,StringFormat='dd/MM/yyyy'}"/>
                             <GridViewColumn Header="Address" Width="100"
                                                 DisplayMemberBinding="{Binding Path=Address}"/>
 
@@ -81,9 +84,20 @@
                                                 DisplayMemberBinding="{Binding Path=Phone}"/>
                             <GridViewColumn Header="Total" Width="100"
                                                 DisplayMemberBinding="{Binding Path=Total}"/>
-                            <GridViewColumn Header="View Details" Width="100"
-                                                />
-                            
+                            <GridViewColumn Header="View Detail" Width="100">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button
+                       Content="View Details"
+                       Margin="0"
+                       VerticalAlignment="Center"
+                                    Click="btnViewDetail_Click"
+                                    CommandParameter="{Binding}"
+                                />
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
                         </GridView>
                     </ListView.View>
                 </ListView>

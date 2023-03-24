@@ -34,44 +34,121 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var order = new Order();
-            order.OrderDate = dpOrderDate.SelectedDate.Value;
-            order.Username = txtUsername.Text;
-            order.Address = txtAddress.Text;
-            order.Phone = txtPhone.Text;
-            order.Total = float.Parse(txtTotal.Text);
-
-            var user = context.Users.Where(u => u.Username.Equals(txtUsername)).FirstOrDefault();
-            order.UserId = user.UserId;
-            
-            context.Orders.Add(order); 
-
-            if(context.SaveChanges() > 0)
+            try
             {
-                MessageBox.Show("add successfully");
+             
+                Order order = new Order
+                {
+                   
+                    OrderDate = dpOrderDate.SelectedDate.Value,
+                    
+                    Username = txtUsername.Text,
+                    Address = txtAddress.Text,
+                    Phone = txtPhone.Text,
+                    Total = float.Parse(txtTotal.Text)
+                };
+                context.Orders.Add(order);
+                int count = context.SaveChanges();
+                if (count > 0)
+                {
+                    MessageBox.Show("Insert success");
+                    loadData();
+                }
+                else
+                {
+                    MessageBox.Show("Insert failure");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("add fail");
+
+                MessageBox.Show("Insert error: " + ex.Message);
             }
         }
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
-            var order = lvOrder.SelectedItem as Order;
+            try
+            {             
+                var order = lvOrder.SelectedItem as Order;
+                if (order != null)
+                {   
+                    order.OrderDate = dpOrderDate.SelectedDate.Value;
+                    order.Username = txtUsername.Text;
+                    order.Address = txtAddress.Text;
+                    order.Phone = txtPhone.Text;
+                    order.Total = float.Parse(txtTotal.Text);
+                    context.Orders.Update(order);
+                    if (context.SaveChanges() > 0)
+                    {
+                        MessageBox.Show("Update success");
+                        loadData();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
 
-           
+                MessageBox.Show("Update error: " + ex.Message);
+            }
+
+
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-
+            var order = lvOrder.SelectedItem as Order;
+            if (order != null)
+            {
+                MessageBoxResult messageResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+                if (messageResult == MessageBoxResult.No)
+                {
+                    return;
+                }
+                try
+                {
+                    context.Orders.Remove(order);
+                    if (context.SaveChanges() > 0)
+                    {
+                        MessageBox.Show("Delete success");
+                        loadData();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose order to delele !");
+            }
+           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var listSearchUser = context.Orders.Where(o => o.Username.Contains(txtSearch.Text)).ToList();
             lvOrder.ItemsSource = listSearchUser;
+            
+        }
+
+        private void btnViewDetail_Click(object sender, RoutedEventArgs e)
+        {
+            Button b = sender as Button;
+                   
+            var order = b.CommandParameter as Order;
+            
+            string orderId = order.OrderId.ToString();
+            if (orderId!=null){
+                ViewDetails viewDetails = new ViewDetails(orderId);
+                viewDetails.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("K co orderId");
+            }
+
         }
     }
 }
