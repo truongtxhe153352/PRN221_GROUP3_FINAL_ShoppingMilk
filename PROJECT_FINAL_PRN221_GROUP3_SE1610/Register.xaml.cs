@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,33 +34,64 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             try
             {
                 User user = new User();
-                user.Username = txtUsername.Text;
-                user.Passwork = txtPassword.Password;
-                user.Address = txtAddress.Text;
-                user.FullName = txtFullname.Text;
-                user.BirthDate = dpkBirthDate.SelectedDate;
-                if (rdoFemale.IsChecked == true)
+                bool isDuplicate = context.Users.Any(x => x.Username == txtUsername.Text);
+
+                if (isDuplicate)
                 {
-                    user.Gender = "Female";
+                    // Thông tin đã trùng lặp với thông tin trong cơ sở dữ liệu
+                    MessageBox.Show("Register account : " + user.Username + "Exist. Please new usename!!!!!!");
+
                 }
-                else
+                else 
                 {
-                    user.Gender = "Male";
+                    string pattern = @"^(\+[0-9]{1,3}[- ]?)?([0-9]{10})$";
+                    //int phone = int.Parse(txtPhone.Text);
+                    string patternEmail = @"^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$";
+
+                    DateTime selectedDate = dpkBirthDate.SelectedDate ?? DateTime.MaxValue;
+                    int year = selectedDate.Year;
+                    //&& year > 1900 || year < DateTime.Now.Year
+
+                    if (txtPassword.Password == txtReEnterPassword.Password && !string.IsNullOrEmpty(txtUsername.Text)
+                    && !string.IsNullOrEmpty(txtPhone.Text) && !string.IsNullOrEmpty(txtFullname.Text)
+                    && !string.IsNullOrEmpty(txtPassword.Password) && dpkBirthDate.SelectedDate.HasValue
+                    && !string.IsNullOrEmpty(txtAddress.Text) && Regex.IsMatch(txtPhone.Text, pattern)
+                    && Regex.IsMatch(txtEmail.Text, patternEmail) )
+                    {
+                        // Thông tin không trùng lặp với thông tin trong cơ sở dữ liệu
+                        // User user = new User();
+                        user.Username = txtUsername.Text;
+                        user.Passwork = txtPassword.Password;
+                        user.Address = txtAddress.Text;
+                        user.FullName = txtFullname.Text;
+                        user.BirthDate = dpkBirthDate.SelectedDate;
+                        if (rdoFemale.IsChecked == true)
+                        {
+                            user.Gender = "Female";
+                        }
+                        else
+                        {
+                            user.Gender = "Male";
+                        }
+                        user.Phone = txtPhone.Text;
+                        user.Email = txtEmail.Text;
+                        user.RoleId = 1;
+
+                        context.Users.Add(user);
+
+                        MessageBox.Show("Register account success: " + user.Username);
+
+                        context.SaveChanges();
+                        Login login = new Login();
+                        login.ShowDialog();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please. Check again information!!!");
+
+                    }
                 }
-                user.Phone = txtPhone.Text;
-                user.Email = txtEmail.Text;
-
-                Role role = new Role();
-                role.RoleName = "user";
-
-                context.Roles.Add(role);
-                context.Users.Add(user);
-                MessageBox.Show("Register account success: " + user.Username);
-
-                context.SaveChanges();
-                Login login = new Login();
-                login.ShowDialog();
-                this.Close();
             }
             catch (Exception ex)
             {

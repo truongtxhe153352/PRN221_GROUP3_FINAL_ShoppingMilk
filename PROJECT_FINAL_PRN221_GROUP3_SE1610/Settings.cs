@@ -9,6 +9,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
     public class Settings
     {
         public static string UserName { get; set; }
+       
         public static int Role { get; set; }
     }
 }

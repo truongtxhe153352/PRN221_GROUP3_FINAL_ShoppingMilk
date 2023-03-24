@@ -19,6 +19,8 @@
                 <TextBox Name="txtUsername" Height="25"></TextBox>
                 <Label>Password</Label>
                 <PasswordBox Name="txtPassword" Height="25"></PasswordBox>
+                <Label>ReEnter Password</Label>
+                <PasswordBox Name="txtReEnterPassword" Height="25"></PasswordBox>
                 <Label>Address</Label>
                 <TextBox Name="txtAddress" Height="25"></TextBox>
                 <Label>Full Name</Label>

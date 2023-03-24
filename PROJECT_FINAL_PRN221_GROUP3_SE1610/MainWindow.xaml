@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button x:Name="btnLogin" Margin="10" Width="100" Height="30px" Content="Login" Click="btnLogin_Click"/>
+        <StackPanel>
+            <Button x:Name="btnLogin"  Width="100" Height="30px" Content="Login" Click="btnLogin_Click"/>
+            <Button x:Name="btnMyProfile"  Width="100" Height="30px" Content="My Profile" Visibility="Collapsed" Click="btnMyProfile_Click"/>
+    </StackPanel>
     </Grid>
 </Window>

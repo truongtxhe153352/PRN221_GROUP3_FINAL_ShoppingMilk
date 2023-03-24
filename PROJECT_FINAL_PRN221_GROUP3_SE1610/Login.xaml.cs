@@ -24,6 +24,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
 
         shoppingMilkPrn221Context context = new shoppingMilkPrn221Context();
 
+        bool isLoggedIn = false;
+
         private User getUser()
         {
 
@@ -62,8 +64,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 //.FirstOrDefault();
 
                 var userLogin = context.Users
-        .Include(u => u.Roles) // include the Roles navigation property
-        .FirstOrDefault(x => x.Username.Equals(userForm.Username)
+               .Include(u => u.Role) // include the Roles navigation property
+               .FirstOrDefault(x => x.Username.Equals(userForm.Username)
                 && x.Passwork.Equals(userForm.Passwork));
 
 
@@ -73,19 +75,18 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 }
                 else
                 {
-                    List<Role> roles = userLogin.Roles.ToList();
-                    foreach (Role role in roles)
-                    {
-                        if (role.RoleName.Equals("user"))
+                        if (userLogin.Role.RoleId == 1)
                         {
+                            isLoggedIn = true;
                             MessageBox.Show("Login User successfully!!!!");
                             Settings.UserName = userLogin.Username;
                             //Settings.Role = userLogin.Roles.n;
                             MainWindow mainWindow = new MainWindow(userLogin);
+                            MyProfile profile = new MyProfile(userLogin);
                             mainWindow.Show();
                             this.Close();
                         }
-                        else if (role.RoleName.Equals("admin"))
+                        else if (userLogin.Role.RoleId == 2)
                         {
                             MessageBox.Show("Login Admin successfully!!!!");
                             //Settings.UserName = userLogin.Name;
@@ -99,9 +100,6 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                             MessageBox.Show("Eo co gi o day");
                         }
                     }
-
-
-                }
             }
             catch (Exception ex)
             {
