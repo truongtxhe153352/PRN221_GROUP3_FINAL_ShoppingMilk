@@ -131,5 +131,12 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             this.Close();
         }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            Register register = new Register();
+            register.Show();
+            this.Close();
+        }
     }
 }

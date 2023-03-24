@@ -42,9 +42,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             {
                 entity.ToTable("Brand");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.BrandId).HasColumnName("brand_id");
 
                 entity.Property(e => e.BrandName)
                     .HasMaxLength(250)
@@ -54,10 +52,15 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
             modelBuilder.Entity<Cart>(entity =>
             {
+                entity.HasKey(e => e.RecordId);
+
                 entity.ToTable("Cart");
 
+                entity.Property(e => e.RecordId).HasColumnName("record_id");
+
                 entity.Property(e => e.CartId)
-                    .ValueGeneratedNever()
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
                     .HasColumnName("cart_id");
 
                 entity.Property(e => e.DateCreate)
@@ -79,9 +82,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             {
                 entity.ToTable("Category");
 
-                entity.Property(e => e.Id)
-                    .ValueGeneratedNever()
-                    .HasColumnName("id");
+                entity.Property(e => e.CategoryId).HasColumnName("category_id");
 
                 entity.Property(e => e.BrandId).HasColumnName("brandId");
 
@@ -98,9 +99,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
             modelBuilder.Entity<Milk>(entity =>
             {
-                entity.Property(e => e.MilkId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("milk_id");
+                entity.Property(e => e.MilkId).HasColumnName("milk_id");
 
                 entity.Property(e => e.CateId).HasColumnName("cateId");
 
@@ -143,9 +142,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             {
                 entity.ToTable("Order");
 
-                entity.Property(e => e.OrderId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("orderId");
+                entity.Property(e => e.OrderId).HasColumnName("order_id");
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(250)
@@ -160,6 +157,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("phone");
+
+                entity.Property(e => e.Total).HasColumnName("total");
 
                 entity.Property(e => e.UserId).HasColumnName("user_id");
 
@@ -180,13 +179,15 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
                 entity.Property(e => e.OrderDetailId)
                     .ValueGeneratedNever()
-                    .HasColumnName("orderDetailId");
+                    .HasColumnName("orderDetail_id");
 
                 entity.Property(e => e.MilkId).HasColumnName("milkId");
 
                 entity.Property(e => e.OrderId).HasColumnName("orderId");
 
-                entity.Property(e => e.Quantity).HasColumnName("quantity");
+                entity.Property(e => e.Quantity)
+                    .ValueGeneratedOnAdd()
+                    .HasColumnName("quantity");
 
                 entity.HasOne(d => d.Milk)
                     .WithMany(p => p.OrderDetails)
@@ -203,9 +204,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             {
                 entity.ToTable("Role");
 
-                entity.Property(e => e.RoleId)
-                    .ValueGeneratedNever()
-                    .HasColumnName("roleId");
+                entity.Property(e => e.RoleId).HasColumnName("roleId");
 
                 entity.Property(e => e.RoleName)
                     .HasMaxLength(250)
@@ -226,7 +225,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 
                             j.IndexerProperty<long>("RoleId").HasColumnName("roleId");
 
-                            j.IndexerProperty<long>("UserId").HasColumnName("userId");
+                            j.IndexerProperty<long>("UserId").ValueGeneratedOnAdd().HasColumnName("userId");
                         });
             });
 
@@ -252,6 +251,11 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("fullName");
+
+                entity.Property(e => e.Gender)
+                    .HasMaxLength(250)
+                    .IsUnicode(false)
+                    .HasColumnName("gender");
 
                 entity.Property(e => e.Passwork)
                     .HasMaxLength(250)

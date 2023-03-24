@@ -10,7 +10,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             Milk = new HashSet<Milk>();
         }
 
-        public long Id { get; set; }
+        public long CategoryId { get; set; }
         public long? BrandId { get; set; }
         public string? Name { get; set; }
 

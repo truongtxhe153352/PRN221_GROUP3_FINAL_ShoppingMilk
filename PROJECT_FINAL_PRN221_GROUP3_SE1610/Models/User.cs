@@ -20,6 +20,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
         public DateTime? BirthDate { get; set; }
         public string? Phone { get; set; }
         public string? Email { get; set; }
+        public string? Gender { get; set; }
 
         public virtual ICollection<Milk> Milk { get; set; }
         public virtual ICollection<Order> Orders { get; set; }

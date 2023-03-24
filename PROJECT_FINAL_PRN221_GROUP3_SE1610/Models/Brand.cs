@@ -10,7 +10,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
             Categories = new HashSet<Category>();
         }
 
-        public long Id { get; set; }
+        public long BrandId { get; set; }
         public string? BrandName { get; set; }
 
         public virtual ICollection<Category> Categories { get; set; }

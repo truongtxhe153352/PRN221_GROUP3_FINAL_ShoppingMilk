@@ -1,0 +1,45 @@
+﻿<Window x:Class="PROJECT_FINAL_PRN221_GROUP3_SE1610.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
+        mc:Ignorable="d"
+        Title="Register" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <Grid Grid.Row="0" Width="400">
+            <StackPanel>
+                <Label Foreground="Green" FontWeight="Bold" FontSize="30">Register</Label>
+                <Label>User name</Label>
+                <TextBox Name="txtUsername" Height="25"></TextBox>
+                <Label>Password</Label>
+                <PasswordBox Name="txtPassword" Height="25"></PasswordBox>
+                <Label>Address</Label>
+                <TextBox Name="txtAddress" Height="25"></TextBox>
+                <Label>Full Name</Label>
+                <TextBox Name="txtFullname" Height="25"></TextBox>
+                <Label>Birth day</Label>
+                <DatePicker Name="dpkBirthDate" Height="25"></DatePicker>
+                <Label>Gender</Label>
+                <StackPanel Orientation="Horizontal">
+                    <RadioButton Name="rdoMale" IsChecked="True">Male</RadioButton>
+                    <RadioButton Name="rdoFemale">Female</RadioButton>
+                </StackPanel>
+                <Label>Phone</Label>
+                <TextBox Name="txtPhone" Height="25"></TextBox>
+                <Label>Email</Label>
+                <TextBox Name="txtEmail" Height="25"></TextBox>
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Button Margin="5" Width="80" Click="btnRegister_Click">Register</Button>
+        </Grid>
+
+    </Grid>
+</Window>
