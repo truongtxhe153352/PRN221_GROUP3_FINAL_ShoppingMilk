@@ -38,7 +38,7 @@
 
         <Grid Grid.Row="1">
             <StackPanel>
-                <Button Width="80" Margin="5" >Edit</Button>
+                <Button Width="80" Margin="5" Click="btnEditProfile_Click">Edit</Button>
             </StackPanel>
         </Grid>
     </Grid>

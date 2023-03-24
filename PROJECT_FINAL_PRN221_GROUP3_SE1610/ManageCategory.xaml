@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
         Title="ManageCategory" Height="637" Width="741" Background="LightBlue">
-    <Grid Margin="0,0,93,104">
+    <Grid Margin="0,0,10,104">
+        <Button x:Name="btnBack" Content="Back"  HorizontalAlignment="Left" Margin="641,0,0,0" VerticalAlignment="Top" Height="29" Width="80" FontSize="16" Click="btnBack_Click"/>
         <Label x:Name="lbTitleAll" Content="Manage Category" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.767,-2.277" FontSize="30" FontWeight="Bold" Foreground="#FFD41717"/>
         <Label Content="Search" HorizontalAlignment="Left" Margin="35,64,0,0" VerticalAlignment="Top" FontSize="16" FontWeight="Bold"/>
         <TextBox x:Name="txtSearch" HorizontalAlignment="Left" Margin="100,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" FontSize="16" Height="27"/>
@@ -40,7 +41,10 @@
                              Text="{Binding Path=Name,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvCate, Path=SelectedItem}"/>
                     <Label Name="lbBrandName" Content="Brand Name"/>
-                    <ComboBox Name="cbBrand"></ComboBox>
+                    <ComboBox Name="cbBrand" HorizontalAlignment="Stretch"
+                             Height="25"
+                             Text="{Binding Path=Brand.BrandName,Mode=OneWay}"
+                             DataContext="{Binding ElementName=lvCate, Path=SelectedItem}" ></ComboBox>
                 </StackPanel>
                 <!--StackPanel for Button controls-->
                 <StackPanel Grid.Row="1" Orientation="Horizontal"

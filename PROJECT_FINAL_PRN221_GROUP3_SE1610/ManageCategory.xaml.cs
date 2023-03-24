@@ -30,6 +30,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         private void loadData()
         {
             lvCate.ItemsSource = context.Categories.Include(c => c.Brand).ToList();
+            cbBrand.ItemsSource = context.Brands.ToList().Select(r => r.BrandName).ToList();
         }
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -42,14 +43,16 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtCateName.Text) || cbBrand.SelectedIndex == null)
+                if (string.IsNullOrEmpty(txtCateName.Text) || cbBrand.SelectedIndex == null)
                 {
                     MessageBox.Show("Add faild");
                     return;
                 }
+                Brand brand = context.Brands.Where(b => b.BrandName == cbBrand.Text).FirstOrDefault();
+
                 Category cate = new Category();
                 cate.Name = txtCateName.Text;
-                cate.BrandId = cbBrand.SelectedIndex;
+                cate.BrandId = brand.BrandId;
                 context.Categories.Add(cate);
                 if (context.SaveChanges() > 0)
                 {
@@ -71,14 +74,15 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             try
             {
-                if (!string.IsNullOrEmpty(txtCateName.Text) || cbBrand.SelectedIndex == null)
+                if (string.IsNullOrEmpty(txtCateName.Text) || cbBrand.SelectedIndex == null)
                 {
                     MessageBox.Show("Update faild");
                     return;
                 }
+                Brand brand = context.Brands.Where(b => b.BrandName == cbBrand.Text).FirstOrDefault();
                 Category cate = lvCate.SelectedItem as Category;
                 cate.Name = txtCateName.Text;
-                cate.BrandId = cbBrand.SelectedIndex;
+                cate.BrandId = brand.BrandId;
                 context.Categories.Update(cate);
                 if (context.SaveChanges() > 0)
                 {
@@ -127,6 +131,13 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             {
 
             }
+        }
+
+        private void btnBack_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.ShowDialog();
+            this.Close();
         }
     }
 }
