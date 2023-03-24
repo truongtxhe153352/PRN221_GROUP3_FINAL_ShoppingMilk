@@ -22,7 +22,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="Màn hình đăng nhập" HorizontalContentAlignment="Center" FontSize="28px" FontWeight="Black" Margin="0,0,0,5" Foreground="Green"/>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Content="Login View" HorizontalContentAlignment="Center" FontSize="28px" FontWeight="Black" Margin="0,0,0,5" Foreground="Green"/>
         <Label Grid.Row="1" Grid.Column="0" Content="UserName" FontSize="14" Margin="5,5,5,5"></Label>
         <TextBox Name="txtUser" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Margin="0,5,5,5" VerticalContentAlignment="Center"/>
         <Label Grid.Row="2" Grid.Column="0" Content="Password" FontSize="14" Margin="5"></Label>

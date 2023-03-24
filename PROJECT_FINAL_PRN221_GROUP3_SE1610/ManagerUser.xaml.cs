@@ -24,6 +24,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         public ManagerUser()
         {
             InitializeComponent();
+            cbRole.ItemsSource = context.Roles.ToList().Select(r => r.RoleName).ToList();
             loadData();
         }
         private void loadData()
@@ -31,46 +32,46 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             lvUser.ItemsSource = context.Users.ToList();
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                if (!string.IsNullOrEmpty(txtUsername.Text)
-                || !string.IsNullOrEmpty(txtPassword.Text)
-                || !string.IsNullOrEmpty(txtFullname.Text)
-                || !string.IsNullOrEmpty(txtAddress.Text)
-                || !string.IsNullOrEmpty(txtEmail.Text)
-                || !string.IsNullOrEmpty(txtPhone.Text)
-                || !string.IsNullOrEmpty(txtGender.Text)
-                || dpBirthDate.SelectedDate == null)
-                {
-                    MessageBox.Show("Add faild");
-                    return;
-                }
-                User user = new User();
-                user.Username = txtUsername.Text;
-                user.Passwork = txtPassword.Text;
-                user.Address = txtAddress.Text;
-                user.Email = txtEmail.Text;
-                user.Phone = txtPhone.Text;
-                user.Gender = txtGender.Text;
-                user.BirthDate = dpBirthDate.SelectedDate;
-                context.Users.Add(user);
-                if (context.SaveChanges() > 0)
-                {
-                    MessageBox.Show("add successfully");
-                    loadData();
-                }
-                else
-                {
-                    MessageBox.Show("add fail");
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("add fail");
-            }
-        }
+        //private void btnAdd_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (!string.IsNullOrEmpty(txtUsername.Text)
+        //        || !string.IsNullOrEmpty(txtPassword.Text)
+        //        || !string.IsNullOrEmpty(txtFullname.Text)
+        //        || !string.IsNullOrEmpty(txtAddress.Text)
+        //        || !string.IsNullOrEmpty(txtEmail.Text)
+        //        || !string.IsNullOrEmpty(txtPhone.Text)
+        //        || !string.IsNullOrEmpty(txtGender.Text)
+        //        || dpBirthDate.SelectedDate == null)
+        //        {
+        //            MessageBox.Show("Add faild");
+        //            return;
+        //        }
+        //        User user = new User();
+        //        user.Username = txtUsername.Text;
+        //        user.Passwork = txtPassword.Text;
+        //        user.Address = txtAddress.Text;
+        //        user.Email = txtEmail.Text;
+        //        user.Phone = txtPhone.Text;
+        //        user.Gender = txtGender.Text;
+        //        user.BirthDate = dpBirthDate.SelectedDate;
+        //        context.Users.Add(user);
+        //        if (context.SaveChanges() > 0)
+        //        {
+        //            MessageBox.Show("add successfully");
+        //            loadData();
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("add fail");
+        //        }
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        MessageBox.Show("add fail");
+        //    }
+        //}
 
 
 
@@ -144,6 +145,35 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             var listSearchUser = context.Users.Where(o => o.Username.Contains(txtSearch.Text)).ToList();
             lvUser.ItemsSource = listSearchUser;
+        }
+
+        private void btnPermission_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                Role role = context.Roles.SingleOrDefault(r => r.RoleName == cbRole.Text);
+
+                var user = lvUser.SelectedItem as User;
+                if (user != null)
+                {
+
+                    
+                    user.RoleId = role.RoleId;
+                    
+                    context.Users.Update(user);
+
+                    if (context.SaveChanges() > 0)
+                    {
+                        MessageBox.Show($"{user.Username} Update success");
+                        loadData();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show("Insert error: " + ex.Message);
+            }
         }
 
 
