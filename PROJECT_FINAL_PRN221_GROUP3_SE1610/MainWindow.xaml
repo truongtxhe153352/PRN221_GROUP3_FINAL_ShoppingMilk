@@ -8,5 +8,6 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Button x:Name="btnLogin" Margin="10" Width="100" Height="30px" Content="Login" Click="btnLogin_Click"/>
+        <Button x:Name="btnCart" Margin="350,150,350,254" Width="100" Height="30px" Content="Cart" Click="btnCart_Click"/>
     </Grid>
 </Window>

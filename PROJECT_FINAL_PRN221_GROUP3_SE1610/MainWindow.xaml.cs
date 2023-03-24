@@ -89,5 +89,12 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 }
             }
         }
+
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+            CartWindow cartWindows = new CartWindow();
+            cartWindows.Show();
+            this.Close();
+        }
     }
 }

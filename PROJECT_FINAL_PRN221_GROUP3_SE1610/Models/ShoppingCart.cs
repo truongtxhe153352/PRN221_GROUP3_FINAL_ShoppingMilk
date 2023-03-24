@@ -10,7 +10,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610.Models
 {
     public partial class ShoppingCart
     {
-        shoppingMilkPrn221Context context;
+        shoppingMilkPrn221Context context = new shoppingMilkPrn221Context();
 
         string ShoppingCartId { get; set; }
         //     public const string CartSessionKey = "CartId";
