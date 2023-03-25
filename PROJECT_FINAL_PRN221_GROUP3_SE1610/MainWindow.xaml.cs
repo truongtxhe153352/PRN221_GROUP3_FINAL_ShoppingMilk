@@ -100,7 +100,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         private void btnCart_Click(object sender, RoutedEventArgs e)
         {
             CartWindow cartWindows = new CartWindow();
-            cartWindows.Show();
+            cartWindows.ShowDialog();
             this.Close();
         }
 
@@ -114,7 +114,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         private void btnManagerUser_Click(object sender, RoutedEventArgs e)
         {
             ManagerUser mU = new ManagerUser();
-            mU.Show();
+            mU.ShowDialog();
             this.Close();
         }
 
