@@ -43,9 +43,15 @@
                              DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}">
                 </TextBox>
                 <Label Content="Image Url"></Label>
-                <!--<TextBox Name="txtImageURL" Text="{Binding Path=ImageUrl,Mode=OneWay}" HorizontalAlignment="Stretch"
+                <TextBox Name="txtImageURL" Text="{Binding Path=ImageUrl,Mode=OneWay}" HorizontalAlignment="Stretch"
                              Height="25"
-                             DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}"></TextBox>-->
+
+                             DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}"></TextBox>
+                <Image Name="imagePicture" Height="50" Width="100">
+                    
+                </Image>
+                <Button Name="btnInsertImage" Content="Insert Image" Click="btnInsertImage_Click"></Button>
+
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="btnUrl"  Width="80" Content="AlbumUrl" Click="btnUrl_Click"/>
                     <TextBox Width="370" Name="txtUrl" HorizontalAlignment="Stretch"
