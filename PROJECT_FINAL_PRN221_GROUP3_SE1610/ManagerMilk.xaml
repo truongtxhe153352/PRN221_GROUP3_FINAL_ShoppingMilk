@@ -54,9 +54,8 @@
                 </StackPanel>
 
                 <Label>Category</Label>
-                <ComboBox Name="cbCategory" SelectedValue="{Binding Path=Cate.Name
-                        ,Mode=OneWay}" 
-                              DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}">
+                <ComboBox Name="cbCategory" Text="{Binding Path=Cate.Name
+                        ,Mode=OneWay}" DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}">
                 </ComboBox>
             </StackPanel>
         </Grid>

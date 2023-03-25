@@ -63,7 +63,6 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Insert error: " + ex.Message);
             }
         }
