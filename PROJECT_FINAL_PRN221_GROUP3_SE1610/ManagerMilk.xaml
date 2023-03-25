@@ -42,16 +42,9 @@
                              Height="25"
                              DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}">
                 </TextBox>
-                <Label Content="Image Url"></Label>
-                <TextBox Name="txtImageURL" Text="{Binding Path=ImageUrl,Mode=OneWay}" HorizontalAlignment="Stretch"
-                             Height="25"
-
-                             DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}"></TextBox>
                 <Image Name="imagePicture" Height="50" Width="100">
                     
                 </Image>
-                <Button Name="btnInsertImage" Content="Insert Image" Click="btnInsertImage_Click"></Button>
-
                 <StackPanel Orientation="Horizontal">
                     <Button x:Name="btnUrl"  Width="80" Content="AlbumUrl" Click="btnUrl_Click"/>
                     <TextBox Width="370" Name="txtUrl" HorizontalAlignment="Stretch"
@@ -69,13 +62,13 @@
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <Button Content="Refresh" Width="85px" Height="20px" Margin="10" Click="Button_Refresh"></Button>
                 <Button Content="Add" Width="85px" Height="20px" Margin="10" Click="btnInsert_Click"></Button>
-                <Button Content="Edit" Width="85px" Height="20px" Margin="10" Click="btnUpdate_Click"></Button>
+                <Button Content="Edit" Width="85px" Height="20px" Margin="10" Name="btnEdit" Click="btnEdit_Click" ></Button>
                 <Button Content="Delete" Width="85px" Height="20px" Margin="10" Click="btnDelete_Click"></Button>
             </StackPanel>
         </Grid>
 
         <Grid Grid.Row="2" Width="Auto" Height="Auto">
-            <ListView Name="lvMilk">
+            <ListView Name="lvMilk" SelectionChanged="lvMilk_SelectionChanged">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="Milk Name" Width="120"
