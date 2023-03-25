@@ -1,4 +1,5 @@
-﻿using PROJECT_FINAL_PRN221_GROUP3_SE1610.Models;
+﻿using Microsoft.Win32;
+using PROJECT_FINAL_PRN221_GROUP3_SE1610.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -135,19 +136,19 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             cbCategory.ItemsSource = context.Categories.ToList().Select(r => r.Name).ToList();
         }
 
-        }
 
-        private void btnInsertImage_Click(object sender, RoutedEventArgs e)
+    private void btnInsertImage_Click(object sender, RoutedEventArgs e)
+    {
+
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Filter = "Image files|*.bmp;*jpg;*.png";
+        openFileDialog.FilterIndex = 1;
+        if (openFileDialog.ShowDialog() == true)
         {
-
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image files|*.bmp;*jpg;*.png";
-            openFileDialog.FilterIndex = 1;
-            if (openFileDialog.ShowDialog() == true)
-            {
-                imagePicture.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                txtImageURL.Text = openFileDialog.FileName;
-            }
+            imagePicture.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+            txtImageURL.Text = openFileDialog.FileName;
+        }
+    }
         private void btnUrl_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
