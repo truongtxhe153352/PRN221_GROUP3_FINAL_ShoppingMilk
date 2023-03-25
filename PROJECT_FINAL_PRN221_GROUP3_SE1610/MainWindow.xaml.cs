@@ -39,10 +39,11 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         }
 
 
-        public MainWindow(User user)
+        public MainWindow(User user, Role role)
         {
+
             InitializeComponent();
-            if (Settings.UserName != null)
+            if (Settings.UserName != null && role.RoleId == 2)
             {
                 User user1 = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
                 isLoggedIn = true;
@@ -50,6 +51,16 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                 btnManagerUser.Visibility = Visibility.Visible;
                 btnManagerOrder.Visibility = Visibility.Visible;
                 btnManagerMilk.Visibility = Visibility.Visible;
+                btnManagerBrand.Visibility = Visibility.Visible;
+                btnManagerCate.Visibility = Visibility.Visible;
+                bindingUser(user1);
+            }
+            else
+            {
+                User user1 = context.Users.Where(X => X.Username == Settings.UserName).FirstOrDefault();
+                isLoggedIn = true;
+                btnMyProfile.Visibility = Visibility.Visible;
+                btnCart.Visibility = Visibility.Visible;
                 bindingUser(user1);
             }
             // bindingCart();
@@ -101,21 +112,18 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             CartWindow cartWindows = new CartWindow();
             cartWindows.ShowDialog();
-            this.Close();
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             HomeWindow home = new HomeWindow();
-            home.Show();
-            this.Close();
+            home.ShowDialog();
         }
 
         private void btnManagerUser_Click(object sender, RoutedEventArgs e)
         {
             ManagerUser mU = new ManagerUser();
             mU.ShowDialog();
-            this.Close();
         }
 
         private void btnManagerOrder_Click(object sender, RoutedEventArgs e)
@@ -128,6 +136,18 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             ManagerMilk managerMilk = new ManagerMilk();
             managerMilk.ShowDialog();
+        }
+
+        private void btnManagerCate_Click(object sender, RoutedEventArgs e)
+        {
+            ManageCategory manage = new ManageCategory();
+            manage.ShowDialog();
+        }
+
+        private void btnManagerBrand_Click(object sender, RoutedEventArgs e)
+        {
+            ManageBrand manager = new ManageBrand();
+            manager.ShowDialog();
         }
     }
 }

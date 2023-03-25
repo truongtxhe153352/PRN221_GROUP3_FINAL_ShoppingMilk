@@ -132,12 +132,5 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
 
             }
         }
-
-        private void btnBack_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.ShowDialog();
-            this.Close();
-        }
     }
 }

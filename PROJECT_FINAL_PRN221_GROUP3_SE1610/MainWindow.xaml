@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="1000">
+        Title="MainWindow" Height="500" Width="1200">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -19,7 +19,7 @@
                 <Button x:Name="btnMyProfile" Margin="10" Width="100" Height="30px" Content="My Profile" Visibility="Collapsed" 
                     Click="btnMyProfile_Click"/>
                 <!--<Button x:Name="btnLogin"  Width="Auto" Height="30px" Content="Login" Click="btnLogin_Click"/>-->
-                <Button x:Name="btnCart" Margin="10" Width="100" Height="30px" Content="Cart" Click="btnCart_Click"/>
+                <Button x:Name="btnCart" Margin="10" Width="100" Height="30px" Content="Cart" Click="btnCart_Click" Visibility="Collapsed"/>
                 <Button x:Name="btnHome" Margin="10" Width="100" Height="30px" Content="Home page" Click="btnHome_Click"/>
                 <Button x:Name="btnManagerUser" Margin="10" Height="30px"  Width="100" Content="Manager User" 
                         Click="btnManagerUser_Click" Visibility="Collapsed"/>
@@ -27,6 +27,10 @@
                          Visibility="Collapsed"/>
                 <Button x:Name="btnManagerMilk" Margin="10" Height="30px"  Width="100" Content="Manager Milk" Click="btnManagerMilk_Click" 
                          Visibility="Collapsed"/>
+                <Button x:Name="btnManagerCate" Margin="10" Height="30px"  Width="120" Content="Manager Category" Click="btnManagerCate_Click"  
+                        Visibility="Collapsed" />
+                <Button x:Name="btnManagerBrand" Margin="10" Height="30px"  Width="100" Content="Manager Brand" Click="btnManagerBrand_Click" 
+                         Visibility="Collapsed" />
             </StackPanel>
         </Grid>
 

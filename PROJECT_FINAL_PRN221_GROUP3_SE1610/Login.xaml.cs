@@ -83,7 +83,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                         ShoppingCart cart = ShoppingCart.GetCart();
                         cart.MigrateCart();
                         //Settings.Role = userLogin.Roles.n;
-                        MainWindow mainWindow = new MainWindow(userLogin);
+                        MainWindow mainWindow = new MainWindow(userLogin, userLogin.Role);
                         MyProfile profile = new MyProfile(userLogin);
                         mainWindow.Show();
                         this.Close();
@@ -94,11 +94,8 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                         //Settings.UserName = userLogin.Name;
                         // Settings.Role = userLogin.Roles.;
                         Settings.UserName = userLogin.Username;
-                        ShoppingCart cart = ShoppingCart.GetCart();
-                        cart.MigrateCart();
-                        MainWindow mainWindow = new MainWindow(userLogin);
+                        MainWindow mainWindow = new MainWindow(userLogin, userLogin.Role);
                         MyProfile profile = new MyProfile(userLogin);
-
                         mainWindow.Show();
                         this.Close();
                     }
