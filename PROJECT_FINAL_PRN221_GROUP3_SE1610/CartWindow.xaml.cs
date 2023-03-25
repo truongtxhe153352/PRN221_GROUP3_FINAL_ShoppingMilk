@@ -33,6 +33,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             Loaded();
         }
 
+        /*
         public CartWindow(ShoppingCart cart)
         {
             InitializeComponent();
@@ -41,6 +42,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             txtTotal.Text = cart.GetTotal().ToString(".00");
             btnCheckout.IsEnabled = !string.IsNullOrEmpty(Settings.UserName) && cart.GetTotal() > 0;
         }
+        */
 
         private void Loaded()
         {

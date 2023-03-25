@@ -182,7 +182,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             int value = (int)(long)button.CommandParameter;
             Milk milk = context.Milk.SingleOrDefault(al => al.MilkId == value);
             cartMilks.AddToCart(milk);
-            CartWindow cart = new CartWindow(cartMilks);
+            CartWindow cart = new CartWindow();
             cart.ShowDialog();
         }
     }
