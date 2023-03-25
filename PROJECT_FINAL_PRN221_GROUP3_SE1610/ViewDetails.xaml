@@ -25,14 +25,14 @@
                     <TextBox Name="txtMilk" HorizontalAlignment="Stretch"
                              Height="30"
                              Text="{Binding Path=Milk.Name,Mode=OneWay}"
-                             DataContext="{Binding ElementName=lvOrderDetail, Path=SelectedItem}"/>
+                             DataContext="{Binding ElementName=lvOrderDetail, Path=SelectedItem}" IsEnabled="False"/>
                     <Label Name="lbQuantity" Content="Quantity"/>
                     <TextBox Name="txtQuantity" HorizontalAlignment="Stretch"
                              Height="30"
                              Text="{Binding Path=Quantity,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvOrderDetail, Path=SelectedItem}"/>
                     <Label Name="lbPrice" Content="Price"/>
-                    <TextBox Name="txtPrice" HorizontalAlignment="Stretch"
+                    <TextBox Name="txtPrice" HorizontalAlignment="Stretch" IsEnabled="False"
                              Height="30"
                              Text="{Binding Path=Milk.Price,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvOrderDetail, Path=SelectedItem}"/>

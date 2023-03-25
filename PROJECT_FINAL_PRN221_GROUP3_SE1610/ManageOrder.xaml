@@ -33,7 +33,7 @@
                     <TextBox Name="txtUsername" HorizontalAlignment="Stretch"
                              Height="25"
                              Text="{Binding Path=Username,Mode=OneWay}"
-                             DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}"/>
+                             DataContext="{Binding ElementName=lvOrder, Path=SelectedItem}" IsEnabled="False"/>
                     <Label Name="lbOrderDate" Content="Orderdate"/>
                     <DatePicker Name="dpOrderDate" HorizontalAlignment="Stretch"
                              Height="25"
