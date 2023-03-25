@@ -49,6 +49,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
             if (context.SaveChanges() > 0)
             {
                 MessageBox.Show("Update Succesfull");
+                loadData();
             }
             else
             {
@@ -71,10 +72,11 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
                     return;
                 }
                 context.Remove(orderDetails);
-                loadData();
+                
                 if (context.SaveChanges() > 0)
                 {
                     MessageBox.Show("Delete Succesfull");
+                    loadData();
                 }
                 else
                 {
