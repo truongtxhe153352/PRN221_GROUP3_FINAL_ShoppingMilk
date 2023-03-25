@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PROJECT_FINAL_PRN221_GROUP3_SE1610"
         mc:Ignorable="d"
-        Title="ManagerMilk" Width="800">
+        Title="ManagerMilk" Width="920">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -32,7 +32,7 @@
                              Height="25"
                              Text="{Binding Path=Price,Mode=OneWay}"
                              DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}"></TextBox>
-                
+
                 <Label Content="Published"></Label>
                 <DatePicker Name="dpkDate" SelectedDate="{Binding Path=Published,Mode=OneWay}" HorizontalAlignment="Stretch"
                              Height="25"
@@ -45,15 +45,24 @@
                 <Label Content="Image Url"></Label>
                 <TextBox Name="txtImageURL" Text="{Binding Path=ImageUrl,Mode=OneWay}" HorizontalAlignment="Stretch"
                              Height="25"
+
                              DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}"></TextBox>
                 <Image Name="imagePicture" Height="50" Width="100">
                     
                 </Image>
                 <Button Name="btnInsertImage" Content="Insert Image" Click="btnInsertImage_Click"></Button>
 
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnUrl"  Width="80" Content="AlbumUrl" Click="btnUrl_Click"/>
+                    <TextBox Width="370" Name="txtUrl" HorizontalAlignment="Stretch"
+                 Height="25" Text="{Binding Path=ImageUrl,StringFormat={}{0:N3}, Mode=OneWay}"
+                      DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}" />
+                </StackPanel>
+
                 <Label>Category</Label>
-                <ComboBox Name="cbCategory" SelectedValue="{Binding Path=Cate.Name, Mode=OneWay}" 
-                              DataContext="{Binding ElementName=lvUser, Path=SelectedItem}">
+                <ComboBox Name="cbCategory" SelectedValue="{Binding Path=Cate.Name
+                        ,Mode=OneWay}" 
+                              DataContext="{Binding ElementName=lvMilk, Path=SelectedItem}">
                 </ComboBox>
             </StackPanel>
         </Grid>
