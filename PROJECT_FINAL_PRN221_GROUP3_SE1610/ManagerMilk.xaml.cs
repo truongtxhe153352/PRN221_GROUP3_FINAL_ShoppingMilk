@@ -171,6 +171,7 @@ namespace PROJECT_FINAL_PRN221_GROUP3_SE1610
         {
             Milk select = lvMilk.SelectedItem as Milk;
             txtUrl.Text = select.ImageUrl;
+            dpkDate.SelectedDate = select.Published;
         }
     }
 }
